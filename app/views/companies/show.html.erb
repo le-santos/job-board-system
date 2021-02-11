@@ -1,0 +1,13 @@
+<h2>Detalhes da empresa</h2>
+
+<div>
+    <img src="<%= @company.logo %>" >
+    <p><%= @company.name %></p>
+    <p><%= @company.description  %></p>
+    <p><%= @company.address  %></p>
+    <p><%= @company.tech_stack.split(',').join(' -')  %></p>
+</div>
+
+<div>
+  <%= link_to 'Voltar', companies_path %>
+</div>

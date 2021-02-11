@@ -1,0 +1,16 @@
+<h1>Empresas cadastradas</h1>
+
+
+<% if @companies.blank? %>
+  <p>Nenhuma empresa cadastrada</p>
+<% else %>
+  <% @companies.each do |company|  %>
+    <div>
+      <p><%= link_to company.name, company_path(company[:id]) %></p>
+      <p><%= company.description  %></p>
+      <p><%= company.tech_stack  %></p>
+      <img src="<%= company.logo %>" >
+    </div>
+  <% end %>
+<% end %>
+
