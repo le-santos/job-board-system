@@ -24,10 +24,6 @@
         <p><%= job.level %></p>
         <p>Até <%= number_to_currency(job.salary, unit: "R$", delimiter: '.', precision: 0) %></p>
         <%= link_to 'Detalhes da vaga', job_path(job)  %>
-        <p><%# job.details %></p>
-        <p><%# job.requirements %></p>
-        <p><%# job.deadline %></p>
-        <p><%# job.quantity_of_positions %></p>
       </div>
     <% end %>
   </section>

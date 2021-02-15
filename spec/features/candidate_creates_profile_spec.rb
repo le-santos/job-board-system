@@ -43,6 +43,44 @@ feature 'A visitor creates a candidate profile' do
     expect(page).to have_link('Sair')
   end
 
+  scenario 'and returns to job application page' do
+    company = Company.create!(name: 'Atendbots' , 
+                              description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
+                              logo: 'atendbot_url' , 
+                              address: 'Rua dos devs, 101, São Paulo, SP', 
+                              tech_stack: 'HTML, Ruby, Ruby on Rails, Bootstrap', 
+                              domain: 'www.atendbots.com.br')
+                    
+    job = Job.create!(title: 'Desenvolvedor(a) Backend Júnior', 
+                      details: 'Desenvolvedor(a) Ruby on Rails para desenvolvimento de aplicações web', 
+                      salary: 3500, 
+                      level: 'Júnior', 
+                      requirements: 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD', 
+                      deadline: '24/12/2022', 
+                      quantity_of_positions: 4, 
+                      company: company )
+
+    visit job_path(job)
+    click_on 'Candidatar-se'
+    click_on 'Criar conta'
+    fill_in 'Nome', with: 'Paco Silva'
+    fill_in 'E-mail', with: 'paco@gmail.com'
+    fill_in 'Senha',  with: '123456'
+    fill_in 'Confirme sua senha', with: '123456'
+    fill_in 'CPF', with: '123.456.789-00'
+    fill_in 'Fone', with: '11 91234-5678'
+    fill_in 'Biografia', with: 'Estudante de Ciência da Computação'
+    fill_in 'Habilidades', with: 'Ruby on Rails, HTML'
+    click_on 'Inscrever-se'
+
+    expect(current_path).to eq(job_path(job))
+    expect(page).to have_content(company.name)
+    expect(page).to have_content(job.title)
+    expect(page).not_to have_link('Candidatar-se')
+    expect(page).to have_link('Enviar Candidatura')
+
+  end
+
   scenario 'and email must be unique' do
     company = Company.create!(name: 'Atendbots' , 
                               description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
