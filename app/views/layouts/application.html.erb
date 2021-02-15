@@ -14,8 +14,18 @@
     <header>
       <nav>
         <%= link_to 'Início', root_path %>
+        <% if candidate_signed_in? %>
+          <li><%= current_candidate.email %></li>
+          <li><%= link_to 'Sair' %></li>
+        <% end %>
       </nav>
     </header>
-    <%= yield %>
+    <main>
+      <div class='flash-messages'>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
+      <%= yield %>
+    </main>
   </body>
 </html>
