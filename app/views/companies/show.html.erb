@@ -20,13 +20,14 @@
     <%= @company.jobs.each do |job|  %>
       <div class="job-<%=job.id%>">
         <h3><%= job.title %></h3>
-        <p><%= job.details %></p>
         <%#TODO - adicionar i18n para formatar currency %>
-        <p>Até <%= number_to_currency(job.salary, unit: "R$", delimiter: '.', precision: 0) %></p>
         <p><%= job.level %></p>
-        <p><%= job.requirements %></p>
-        <p><%= job.deadline %></p>
-        <p><%= job.quantity_of_positions %></p>
+        <p>Até <%= number_to_currency(job.salary, unit: "R$", delimiter: '.', precision: 0) %></p>
+        <%= link_to 'Detalhes da vaga', company_job_path(job)  %>
+        <p><%# job.details %></p>
+        <p><%# job.requirements %></p>
+        <p><%# job.deadline %></p>
+        <p><%# job.quantity_of_positions %></p>
       </div>
     <% end %>
   </section>
