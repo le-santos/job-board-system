@@ -24,12 +24,8 @@ feature 'Visitor views company available jobs' do
 
     within("div.job-#{job.id}") do
       expect(page).to have_content(job.title)
-      expect(page).to have_content(job.details)
-      expect(page).to have_content('Até R$3.500')
+      expect(page).to have_content('Até R$ 3.500')
       expect(page).to have_content(job.level)
-      expect(page).to have_content(job.requirements)
-      #TODO visitante precisa saber quantas vagas tem??
-      expect(page).to have_content('4')
     end
   end
 
