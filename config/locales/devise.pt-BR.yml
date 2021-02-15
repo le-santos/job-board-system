@@ -2,6 +2,7 @@ pt-BR:
   activerecord:
     attributes:
       candidate:
+        biography: Biografia
         confirmation_sent_at: Confirmação enviada em
         confirmation_token: Token de confirmação
         confirmed_at: Confirmado em
@@ -15,13 +16,17 @@ pt-BR:
         last_sign_in_at: Último acesso em
         last_sign_in_ip: Último IP de acesso
         locked_at: Bloqueado em
+        name: Nome
+        cpf: CPF
         password: Senha
         password_confirmation: Confirme sua senha
+        phone: Fone
         remember_created_at: Lembrar criado em
         remember_me: Lembre-se de mim
         reset_password_sent_at: Resetar senha enviado em
         reset_password_token: Resetar token de senha
         sign_in_count: Contagem de acessos
+        skills: Habilidades
         unconfirmed_email: E-mail não confirmado
         unlock_token: Token de desbloqueio
         updated_at: Atualizado em
@@ -105,6 +110,11 @@ pt-BR:
         minimum_password_length:
           one: "(Mínimo de %{count} caractere)"
           other: "(Mínimo de %{count} caracteres)"
+        name: Nome
+        cpf: CPF
+        phone: Fone
+        biography: Biografia
+        skills: Habilidades
       signed_up: Bem vindo! Você realizou seu registro com sucesso.
       signed_up_but_inactive: Você se inscreveu com sucesso, porém nós não podemos autenticá-lo porque sua conta ainda não foi ativada.
       signed_up_but_locked: Você se inscreveu com sucesso. Porém nós não podemos autenticá-lo porque sua conta está bloqueada.

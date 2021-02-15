@@ -26,9 +26,14 @@ feature 'A visitor creates a candidate profile' do
     end
     click_on 'Candidatar-se'
     click_on 'Criar conta'
+    fill_in 'Nome', with: 'Paco Silva'
     fill_in 'E-mail', with: 'paco@gmail.com'
     fill_in 'Senha',  with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
+    fill_in 'CPF', with: '123.456.789-00'
+    fill_in 'Fone', with: '11 91234-5678'
+    fill_in 'Biografia', with: 'Estudante de Ciência da Computação'
+    fill_in 'Habilidades', with: 'Ruby on Rails, HTML'
     click_on 'Inscrever-se'
     
     expect(Candidate.last.email).to eq('paco@gmail.com')
@@ -53,7 +58,11 @@ feature 'A visitor creates a candidate profile' do
                       deadline: '24/12/2022', 
                       quantity_of_positions: 4, 
                       company: company )
-    Candidate.create!(email: 'paco@gmail.com', password: '123456' )
+    Candidate.create!(email: 'paco@gmail.com', 
+                      password: '123456', 
+                      name: 'P', cpf: '123', 
+                      phone: '123', biography: 'Bla', 
+                      skills: 'bla' )
 
     visit root_path
     click_on 'Empresas'
@@ -66,12 +75,16 @@ feature 'A visitor creates a candidate profile' do
     fill_in 'E-mail', with: 'paco@gmail.com'
     fill_in 'Senha',  with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
+    fill_in 'CPF', with: '123.456.789-00'
+    fill_in 'Fone', with: '11 91234-5678'
+    fill_in 'Biografia', with: 'Estudante de Ciência da Computação'
+    fill_in 'Habilidades', with: 'Ruby on Rails, HTML'
     click_on 'Inscrever-se'
     
-    expect(page).to have_content('E-mail já está em uso.')
+    expect(page).to have_content('E-mail já está em uso')
   end
 
-  scenario 'and must complete profile' do
+  scenario 'and attributes must not be blank' do
     company = Company.create!(name: 'Atendbots' , 
                               description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
                               logo: 'atendbot_url' , 
@@ -96,12 +109,14 @@ feature 'A visitor creates a candidate profile' do
     end
     click_on 'Candidatar-se'
     click_on 'Criar conta'
-    fill_in 'E-mail', with: 'paco@gmail.com'
-    fill_in 'Senha',  with: '123456'
-    fill_in 'Confirme sua senha', with: '123456'
     click_on 'Inscrever-se'
     
-    expect(page).to have_content('Complete seu perfil')
-    expect(current_path).to eq(candidate_registration_path)
+    expect(page).to have_content('E-mail não pode ficar em branco')
+    expect(page).to have_content('Senha não pode ficar em branco')
+    expect(page).to have_content('Nome não pode ficar em branco')
+    expect(page).to have_content('CPF não pode ficar em branco')
+    expect(page).to have_content('Fone não pode ficar em branco')
+    expect(page).to have_content('Biografia não pode ficar em branco')
+    expect(page).to have_content('Habilidades não pode ficar em branco')
   end
 end
