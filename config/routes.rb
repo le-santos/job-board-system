@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :candidates
 
   resources :companies, only: %i[ index show ] do
-    resources :jobs, only: %i[ show ]
+    resources :jobs, only: %i[ index ]
   end
+  resources :jobs, only: %i[ show ]
 end

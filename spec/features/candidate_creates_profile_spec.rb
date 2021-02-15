@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'A visitor creates a candidate profile' do
+  #TODO usar factory bot para diminuir tamanho dos testes
   scenario 'successfully' do
     company = Company.create!(name: 'Atendbots' , 
                               description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
@@ -42,7 +43,7 @@ feature 'A visitor creates a candidate profile' do
     expect(page).to have_link('Sair')
   end
 
-  scenario 'and email must me unique' do
+  scenario 'and email must be unique' do
     company = Company.create!(name: 'Atendbots' , 
                               description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
                               logo: 'atendbot_url' , 
@@ -64,12 +65,7 @@ feature 'A visitor creates a candidate profile' do
                       phone: '123', biography: 'Bla', 
                       skills: 'bla' )
 
-    visit root_path
-    click_on 'Empresas'
-    click_on 'Atendbots'
-    within("div.job-#{job.id}") do
-      click_on 'Detalhes da vaga'
-    end
+    visit job_path(job)
     click_on 'Candidatar-se'
     click_on 'Criar conta'
     fill_in 'E-mail', with: 'paco@gmail.com'
@@ -101,12 +97,7 @@ feature 'A visitor creates a candidate profile' do
                       quantity_of_positions: 4, 
                       company: company )
 
-    visit root_path
-    click_on 'Empresas'
-    click_on 'Atendbots'
-    within("div.job-#{job.id}") do
-      click_on 'Detalhes da vaga'
-    end
+    visit job_path(job)
     click_on 'Candidatar-se'
     click_on 'Criar conta'
     click_on 'Inscrever-se'

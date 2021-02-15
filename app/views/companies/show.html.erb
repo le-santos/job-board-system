@@ -23,7 +23,7 @@
         <%#TODO - adicionar i18n para formatar currency %>
         <p><%= job.level %></p>
         <p>Até <%= number_to_currency(job.salary, unit: "R$", delimiter: '.', precision: 0) %></p>
-        <%= link_to 'Detalhes da vaga', company_job_path(job)  %>
+        <%= link_to 'Detalhes da vaga', job_path(job)  %>
         <p><%# job.details %></p>
         <p><%# job.requirements %></p>
         <p><%# job.deadline %></p>
