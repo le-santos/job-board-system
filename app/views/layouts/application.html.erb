@@ -16,7 +16,7 @@
         <%= link_to 'Início', root_path %>
         <% if candidate_signed_in? %>
           <li><%= current_candidate.email %></li>
-          <li><%= link_to 'Sair' %></li>
+          <li><%= link_to 'Sair', destroy_candidate_session_path, method: :delete %></li>
         <% end %>
       </nav>
     </header>
