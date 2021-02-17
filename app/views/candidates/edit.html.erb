@@ -1,0 +1,33 @@
+<h2>Editar Perfil</h2>
+
+<%= form_with model: @candidate do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, placeholder: @candidate.name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cpf %><br />
+    <%= f.text_field :cpf, placeholder: @candidate.cpf %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone, placeholder: @candidate.phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :biography %><br />
+    <%= f.text_area :biography, placeholder: @candidate.biography %>
+  </div>
+
+  <div class="field">
+    <%= f.label :skills %><br />
+    <%= f.text_area :skills, placeholder: @candidate.skills %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Salvar' %>
+  </div>
+<% end %>
+  

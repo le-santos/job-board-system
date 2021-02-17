@@ -1,0 +1,18 @@
+<h2>Perfil do candidato:</h2>
+
+<h3><%= @candidate.name  %></h3>
+
+<dl>
+  <dt>Email</dt>
+  <dd><%= @candidate.email %></dd>
+  <dt>CPF</dt>
+  <dd><%= @candidate.cpf %></dd>
+  <dt>Fone</dt>
+  <dd><%= @candidate.phone %></dd>
+  <dt>Biografia</dt>
+  <dd><%= @candidate.biography %></dd>
+  <dt>Habilidades</dt>
+  <dd><%= @candidate.skills %></dd>
+</dl>
+
+<%= link_to 'Editar Perfil', edit_candidate_path(@candidate)  %>
