@@ -19,7 +19,7 @@
 
 <div>
   <% if candidate_signed_in? %>
-    <%= link_to 'Enviar Candidatura'  %>
+    <%= link_to 'Enviar Candidatura', apply_job_path, method: :post  %>
   <% else %>
     <%= link_to 'Candidatar-se', new_candidate_session_path %>
   <% end %>

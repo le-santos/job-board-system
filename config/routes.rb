@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     resources :jobs, only: %i[ index ]
   end
   
-  resources :jobs, only: %i[ index show ]
+  resources :jobs, only: %i[ index show ] do
+    post 'apply', on: :member
+  end
+  
 end

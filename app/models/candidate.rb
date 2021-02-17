@@ -5,4 +5,6 @@ class Candidate < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   validates :name, :cpf, :phone, :biography, :skills, presence: true
+
+  has_many :job_applications
 end
