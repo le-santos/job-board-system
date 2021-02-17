@@ -1,0 +1,31 @@
+FactoryBot.define do
+  factory :company do
+    name { 'Atendbots' } 
+    description { 'Sistemas de automação de atendimento (chatbots)' }
+    logo { 'atendbot_url' }
+    address { 'Rua dos devs, 101, São Paulo, SP' }
+    tech_stack { 'HTML, Ruby, Ruby on Rails, Bootstrap' }
+    domain { 'www.atendbots.com.br'  }
+  end
+
+  factory :job do
+    title { 'Desenvolvedor(a) Backend Júnior' }
+    details { 'Desenvolvedor(a) Ruby on Rails para desenvolvimento de aplicações web' }
+    salary { 3500 } 
+    level { 'Júnior' }
+    requirements { 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD' }
+    deadline { '24/12/2022' }
+    quantity_of_positions { 4 }
+    company
+  end
+  
+  factory :candidate do
+    email { 'paco@gmail.com' }
+    password { '123456' }
+    name { 'Paco Silva' } 
+    cpf { '123456789' } 
+    phone { '123123' }
+    biography { 'Estudante' }
+    skills { 'Ruby on Rails' }
+  end
+end
