@@ -3,21 +3,8 @@ require 'rails_helper'
 feature 'A visitor creates a candidate profile' do
   #TODO usar factory bot para diminuir tamanho dos testes
   scenario 'successfully' do
-    company = Company.create!(name: 'Atendbots' , 
-                              description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
-                              logo: 'atendbot_url' , 
-                              address: 'Rua dos devs, 101, São Paulo, SP', 
-                              tech_stack: 'HTML, Ruby, Ruby on Rails, Bootstrap', 
-                              domain: 'www.atendbots.com.br')
-                    
-    job = Job.create!(title: 'Desenvolvedor(a) Backend Júnior', 
-                      details: 'Desenvolvedor(a) Ruby on Rails para desenvolvimento de aplicações web', 
-                      salary: 3500, 
-                      level: 'Júnior', 
-                      requirements: 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD', 
-                      deadline: '24/12/2022', 
-                      quantity_of_positions: 4, 
-                      company: company )
+    company = FactoryBot.create(:company, { name: 'Atendbots' })
+    job = FactoryBot.create(:job, company: company)
 
     visit root_path
     click_on 'Empresas'
@@ -44,21 +31,8 @@ feature 'A visitor creates a candidate profile' do
   end
 
   scenario 'and returns to job application page' do
-    company = Company.create!(name: 'Atendbots' , 
-                              description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
-                              logo: 'atendbot_url' , 
-                              address: 'Rua dos devs, 101, São Paulo, SP', 
-                              tech_stack: 'HTML, Ruby, Ruby on Rails, Bootstrap', 
-                              domain: 'www.atendbots.com.br')
-                    
-    job = Job.create!(title: 'Desenvolvedor(a) Backend Júnior', 
-                      details: 'Desenvolvedor(a) Ruby on Rails para desenvolvimento de aplicações web', 
-                      salary: 3500, 
-                      level: 'Júnior', 
-                      requirements: 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD', 
-                      deadline: '24/12/2022', 
-                      quantity_of_positions: 4, 
-                      company: company )
+    company = FactoryBot.create(:company, { name: 'Atendbots' })
+    job = FactoryBot.create(:job, company: company)
 
     visit job_path(job)
     click_on 'Candidatar-se'
@@ -78,30 +52,12 @@ feature 'A visitor creates a candidate profile' do
     expect(page).to have_content(job.title)
     expect(page).not_to have_link('Candidatar-se')
     expect(page).to have_link('Enviar Candidatura')
-
   end
 
   scenario 'and email must be unique' do
-    company = Company.create!(name: 'Atendbots' , 
-                              description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
-                              logo: 'atendbot_url' , 
-                              address: 'Rua dos devs, 101, São Paulo, SP', 
-                              tech_stack: 'HTML, Ruby, Ruby on Rails, Bootstrap', 
-                              domain: 'www.atendbots.com.br')
-                    
-    job = Job.create!(title: 'Desenvolvedor(a) Backend Júnior', 
-                      details: 'Desenvolvedor(a) Ruby on Rails para desenvolvimento de aplicações web', 
-                      salary: 3500, 
-                      level: 'Júnior', 
-                      requirements: 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD', 
-                      deadline: '24/12/2022', 
-                      quantity_of_positions: 4, 
-                      company: company )
-    Candidate.create!(email: 'paco@gmail.com', 
-                      password: '123456', 
-                      name: 'P', cpf: '123', 
-                      phone: '123', biography: 'Bla', 
-                      skills: 'bla' )
+    company = FactoryBot.create(:company, { name: 'Atendbots' })
+    job = FactoryBot.create(:job, company: company)
+    candidate = FactoryBot.create(:candidate, { email: 'paco@gmail.com' })
 
     visit job_path(job)
     click_on 'Candidatar-se'
@@ -119,21 +75,8 @@ feature 'A visitor creates a candidate profile' do
   end
 
   scenario 'and attributes must not be blank' do
-    company = Company.create!(name: 'Atendbots' , 
-                              description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
-                              logo: 'atendbot_url' , 
-                              address: 'Rua dos devs, 101, São Paulo, SP', 
-                              tech_stack: 'HTML, Ruby, Ruby on Rails, Bootstrap', 
-                              domain: 'www.atendbots.com.br')
-                    
-    job = Job.create!(title: 'Desenvolvedor(a) Backend Júnior', 
-                      details: 'Desenvolvedor(a) Ruby on Rails para desenvolvimento de aplicações web', 
-                      salary: 3500, 
-                      level: 'Júnior', 
-                      requirements: 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD', 
-                      deadline: '24/12/2022', 
-                      quantity_of_positions: 4, 
-                      company: company )
+    company = FactoryBot.create(:company, { name: 'Atendbots' })
+    job = FactoryBot.create(:job, company: company)
 
     visit job_path(job)
     click_on 'Candidatar-se'
@@ -150,21 +93,8 @@ feature 'A visitor creates a candidate profile' do
   end
 
   scenario 'and can sign out' do 
-    company = Company.create!(name: 'Atendbots' , 
-                              description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
-                              logo: 'atendbot_url' , 
-                              address: 'Rua dos devs, 101, São Paulo, SP', 
-                              tech_stack: 'HTML, Ruby, Ruby on Rails, Bootstrap', 
-                              domain: 'www.atendbots.com.br')
-                    
-    job = Job.create!(title: 'Desenvolvedor(a) Backend Júnior', 
-                      details: 'Desenvolvedor(a) Ruby on Rails para desenvolvimento de aplicações web', 
-                      salary: 3500, 
-                      level: 'Júnior', 
-                      requirements: 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD', 
-                      deadline: '24/12/2022', 
-                      quantity_of_positions: 4, 
-                      company: company )
+    company = FactoryBot.create(:company, { name: 'Atendbots' })
+    job = FactoryBot.create(:job, company: company)
 
     visit job_path(job)
     click_on 'Candidatar-se'

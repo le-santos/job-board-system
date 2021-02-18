@@ -1,0 +1,8 @@
+pt-BR:
+  candidates:
+    registrations:
+      new: 
+        sign_up: 'Inscrever-se'
+    sessions:
+      new:
+        sign_in: 'Login'

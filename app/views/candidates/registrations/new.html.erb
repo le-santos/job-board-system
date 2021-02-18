@@ -1,9 +1,9 @@
 <h2>Crie sua conta</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "candidates/shared/error_messages", resource: resource %>
 
-  <div class="field">
+    <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
@@ -51,4 +51,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "candidates/shared/links" %>

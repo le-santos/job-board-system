@@ -16,7 +16,7 @@ FactoryBot.define do
     requirements { 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD' }
     deadline { '24/12/2022' }
     quantity_of_positions { 4 }
-    company
+    association :company, factory: :company
   end
   
   factory :candidate do
