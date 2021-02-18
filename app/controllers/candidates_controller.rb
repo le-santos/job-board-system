@@ -20,6 +20,12 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def apply
+    job = Job.find(params[:id])
+    current_candidate.applyForJob!(job)
+    redirect_to job, notice: 'Candidatura enviada'
+  end
+
   private
 
   def candidate_params

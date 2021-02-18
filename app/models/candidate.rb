@@ -5,6 +5,9 @@ class Candidate < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   validates :name, presence: true
-
   has_many :job_applications
+
+  def applyForJob!(job)
+    JobApplication.create!(candidate: self, job: job)
+  end
 end
