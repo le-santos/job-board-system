@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'A visitor creates a candidate profile' do
+feature 'A visitor creates a candidate account' do
   #TODO usar factory bot para diminuir tamanho dos testes
   scenario 'successfully' do
     company = FactoryBot.create(:company, { name: 'Atendbots' })
@@ -18,10 +18,6 @@ feature 'A visitor creates a candidate profile' do
     fill_in 'E-mail', with: 'paco@gmail.com'
     fill_in 'Senha',  with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
-    fill_in 'CPF', with: '123.456.789-00'
-    fill_in 'Fone', with: '11 91234-5678'
-    fill_in 'Biografia', with: 'Estudante de Ciência da Computação'
-    fill_in 'Habilidades', with: 'Ruby on Rails, HTML'
     click_on 'Inscrever-se'
     
     expect(Candidate.last.email).to eq('paco@gmail.com')
@@ -41,10 +37,6 @@ feature 'A visitor creates a candidate profile' do
     fill_in 'E-mail', with: 'paco@gmail.com'
     fill_in 'Senha',  with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
-    fill_in 'CPF', with: '123.456.789-00'
-    fill_in 'Fone', with: '11 91234-5678'
-    fill_in 'Biografia', with: 'Estudante de Ciência da Computação'
-    fill_in 'Habilidades', with: 'Ruby on Rails, HTML'
     click_on 'Inscrever-se'
 
     expect(current_path).to eq(job_path(job))
@@ -65,10 +57,6 @@ feature 'A visitor creates a candidate profile' do
     fill_in 'E-mail', with: 'paco@gmail.com'
     fill_in 'Senha',  with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
-    fill_in 'CPF', with: '123.456.789-00'
-    fill_in 'Fone', with: '11 91234-5678'
-    fill_in 'Biografia', with: 'Estudante de Ciência da Computação'
-    fill_in 'Habilidades', with: 'Ruby on Rails, HTML'
     click_on 'Inscrever-se'
     
     expect(page).to have_content('E-mail já está em uso')
@@ -83,13 +71,9 @@ feature 'A visitor creates a candidate profile' do
     click_on 'Criar conta'
     click_on 'Inscrever-se'
     
+    expect(page).to have_content('Nome não pode ficar em branco')
     expect(page).to have_content('E-mail não pode ficar em branco')
     expect(page).to have_content('Senha não pode ficar em branco')
-    expect(page).to have_content('Nome não pode ficar em branco')
-    expect(page).to have_content('CPF não pode ficar em branco')
-    expect(page).to have_content('Fone não pode ficar em branco')
-    expect(page).to have_content('Biografia não pode ficar em branco')
-    expect(page).to have_content('Habilidades não pode ficar em branco')
   end
 
   scenario 'and can sign out' do 
@@ -103,10 +87,6 @@ feature 'A visitor creates a candidate profile' do
     fill_in 'E-mail', with: 'paco@gmail.com'
     fill_in 'Senha',  with: '123456'
     fill_in 'Confirme sua senha', with: '123456'
-    fill_in 'CPF', with: '123.456.789-00'
-    fill_in 'Fone', with: '11 91234-5678'
-    fill_in 'Biografia', with: 'Estudante de Ciência da Computação'
-    fill_in 'Habilidades', with: 'Ruby on Rails, HTML'
     click_on 'Inscrever-se'
     click_on 'Sair'
 
