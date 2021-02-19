@@ -8,7 +8,6 @@ RSpec.describe Candidate, type: :model do
     
       job_app = candidate.applyForJob!(job)
 
-
       expect(candidate.job_applications.size).to eq(1)
       expect(candidate.job_applications.last).to eq(job_app)
     end
@@ -23,6 +22,16 @@ RSpec.describe Candidate, type: :model do
       }.to raise_error(ActiveRecord::RecordInvalid)
       
       expect(candidate.job_applications.size).to eq(1)
-    end 
+    end
+    
+    it 'can not apply if candidate profile is blank' do
+      candidate = FactoryBot.create(:candidate, { cpf: '' })
+      job = FactoryBot.create(:job)
+      
+      job_app = candidate.applyForJob!(job)
+      
+      expect(job_app.valid?).to eq(false)
+      expect(candidate.job_applications.size).to eq(0)
+    end
   end
 end
