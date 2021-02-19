@@ -1,21 +1,23 @@
 require 'rails_helper'
 
 feature 'An employee sign up' do
-  scenario 'successfully' do
-  
+  scenario 'successfully and is linked to a company' do
+    company = FactoryBot.create(:company, { domain: 'www.superbots.com.br' })
+
     visit root_path
     click_on 'Login para Empresas'
     click_on 'Criar conta'
     within('form') do
-      fill_in 'E-mail', with: 'jonas@atendbots.com.br'
+      fill_in 'E-mail', with: 'jonas@superbots.com.br'
       fill_in 'Senha',  with: '123456'
       fill_in 'Confirme sua senha', with: '123456'
       click_on 'Inscrever-se'
     end
-    
-    expect(Employee.last.email).to eq('jonas@atendbots.com.br')
+
+    expect(Employee.last.email).to eq('jonas@superbots.com.br')
+    expect(Employee.last.company).to eq(company)
     expect(page).to have_content('Você realizou seu registro com sucesso.')
-    expect(page).to have_content('jonas@atendbots.com.br')
+    expect(page).to have_content('jonas@superbots.com.br')
     expect(page).to have_link('Sair')
   end
 
@@ -36,8 +38,8 @@ feature 'An employee sign up' do
   end
 
   scenario 'and can logout' do
-    candidate = FactoryBot.create(:employee, { email: 'jonas@atendbots.com.br' })
-    login_as candidate, scope: :candidate
+    employee = FactoryBot.create(:employee)
+    login_as employee, scope: :employee
     
     visit root_path
     click_on 'Sair'
@@ -46,9 +48,7 @@ feature 'An employee sign up' do
     expect(current_path).to eq(root_path)
   end
 
-
-  scenario 'must be linked to a company' do
-    company = FactoryBot.create(:company, { domain: 'www.atendbots.com.br' })
+  scenario 'must create company if first employee' do
 
     visit root_path
     click_on 'Login para Empresas'
@@ -60,13 +60,8 @@ feature 'An employee sign up' do
       click_on 'Inscrever-se'
     end
 
-    expect(page).to have_content('Você realizou seu registro com sucesso.')
-    expect(Employee.last.company).to eq(company)
-  end
-
-  scenario 'must create company if first employee' do
-    
-
+    expect(current_path).to eq('new_company_path')
+    expect(page).to have_content('Criar perfil da empresa')
   end
 
 end

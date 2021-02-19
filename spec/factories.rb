@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :employee do
     email { 'jonas@atendbots.com.br' }
     password { '123456' }
+    association :company, factory: :company
   end
 
   factory :company do
