@@ -22,13 +22,7 @@ class CandidatesController < ApplicationController
 
   def apply
     job = Job.find(params[:id])
-    #applyForJob(current_candidate, job)
-    
-    if JobApplication.create(candidate: self, job: job)      
-      redirect_to job, notice: 'Candidatura enviada'
-    else
-      render job
-    end
+    current_candidate.applyForJob!(job)
   end
 
   private

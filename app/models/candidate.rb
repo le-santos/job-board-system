@@ -8,6 +8,6 @@ class Candidate < ApplicationRecord
   has_many :job_applications
 
   def applyForJob!(job)
-    JobApplication.create(candidate: self, job: job)      
+    JobApplication.create!(candidate: self, job: job)      
   end
 end
