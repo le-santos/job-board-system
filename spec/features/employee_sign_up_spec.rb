@@ -60,6 +60,7 @@ feature 'An employee sign up' do
       click_on 'Inscrever-se'
     end
 
+    expect(page).to have_content('Você realizou seu registro com sucesso.')
     expect(Employee.last.company).to eq(company)
   end
 
