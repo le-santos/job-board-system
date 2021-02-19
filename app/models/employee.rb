@@ -1,16 +1,19 @@
 class Employee < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  before_save :search_company
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  before_save :search_company
 
   belongs_to :company, optional: true
 
   private
   def search_company
-    #search for company
-    p email
+    company_domain = email.gsub(/[\S]*@/, 'www.')
+    company = Company.find_by(domain: company_domain)
+    if company.nil?
+      # Create company
+    else
+      self.company = company
+    end
   end
 end
