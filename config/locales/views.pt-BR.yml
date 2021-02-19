@@ -6,3 +6,11 @@ pt-BR:
     sessions:
       new:
         sign_in: 'Login'
+  employees:
+    registrations:
+      new: 
+        sign_up: 'Inscrever-se'
+        email: 'E-mail'
+    sessions:
+      new:
+        sign_in: 'Login'

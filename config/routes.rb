@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     post 'apply', on: :member
   end
 
+  devise_for :employees, path: 'employees'
+
   resources :companies, only: %i[ index show ] do
     resources :jobs, only: %i[ index ]
   end

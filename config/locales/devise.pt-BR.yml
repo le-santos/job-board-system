@@ -1,6 +1,10 @@
 pt-BR:
   activerecord:
     attributes:
+      employee:
+        email: 'E-mail'
+        password: Senha
+        password_confirmation: Confirme sua senha
       candidate:
         biography: Biografia
         confirmation_sent_at: Confirmação enviada em

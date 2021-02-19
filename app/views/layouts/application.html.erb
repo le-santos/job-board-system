@@ -14,11 +14,16 @@
     <header>
       <nav>
         <%= link_to 'Início', root_path %>
+        <%#TODO refatorar essa view  %>
         <% if candidate_signed_in? %>
           <li><%= link_to current_candidate.email, candidate_path(current_candidate) %></li>
           <li><%= link_to 'Sair', destroy_candidate_session_path, method: :delete %></li>
-        <% elsif !current_page?(new_candidate_session_path) %>
+        <% elsif employee_signed_in? %>
+          <li><%= link_to current_employee.email %></li>
+          <li><%= link_to 'Sair', destroy_employee_session_path, method: :delete %></li>
+        <% elsif !current_page?(new_candidate_session_path) #|| !current_page?(new_employee_session_path) %>
           <li><%= link_to 'Login para Candidatos', new_candidate_session_path %></li>
+          <li><%= link_to 'Login para Empresas', new_employee_session_path %></li>
         <% end %>
       </nav>
     </header>
