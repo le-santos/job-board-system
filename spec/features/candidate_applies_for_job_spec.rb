@@ -34,4 +34,31 @@ feature 'A candidate applies for a job' do
       expect(page).to have_content('Vaga: Desenvolvedor(a) Backend Júnior')
     end
   end
+
+  scenario 'and cannot apply twice' do
+    company = FactoryBot.create(:company, { name: 'Atendbots' })
+    job = FactoryBot.create(:job, company: company)
+    candidate = FactoryBot.create(:candidate)
+    JobApplication.create(candidate: candidate, job: job)
+    
+    login_as candidate, scope: :candidate
+    visit job_path(job)
+    click_on 'Enviar Candidatura'
+
+    expect(page).to have_content('Já existe uma candidatura para essa vaga')
+    expect(candidate.job_applications.count).to eq(1)
+  end
+
+  scenario 'and cannot apply if profile is blank' do
+    company = FactoryBot.create(:company, { name: 'Atendbots' })
+    job = FactoryBot.create(:job, company: company)
+    candidate = FactoryBot.create(:candidate, cpf: '')
+    
+    login_as candidate, scope: :candidate
+    visit job_path(job)
+    click_on 'Enviar Candidatura'
+
+    expect(page).to have_content('É necessário completar seu perfil')
+    expect(candidate.job_applications.count).to eq(0)
+  end
 end
