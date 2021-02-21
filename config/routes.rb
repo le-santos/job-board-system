@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :employees, path: 'employees'
 
-  resources :companies, only: %i[ index show ] do
+  resources :companies, only: %i[ index show edit update ] do
     resources :jobs, only: %i[ index ]
   end
   
