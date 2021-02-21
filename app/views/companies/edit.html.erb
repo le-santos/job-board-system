@@ -1,6 +1,32 @@
 <h2>Dados da Empresa <%= @company.name %></h2>
 
 <% unless @company.has_empty_profile? == false %>
-  <h2>Completar perfil da Empresa</h2>
+  <h3>Completar perfil da Empresa</h3>
 <% end %>
 
+<%#TODO - add i18n para as labels de company edit  %>
+</div>
+  <%= form_with model: @company do |f| %>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, placeholder: "Nome da empresa" %><br />
+
+    <%#TODO Verificar se esse disabled funciona  %>
+    <%= f.label :domain, 'website' %>
+    <%= f.text_field :domain, disabled: true, placeholder: @company.domain %><br />
+
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_field :description, placeholder: "Empresa de ..." %><br />
+
+    <%= f.label :address, 'Endereço' %>
+    <%= f.text_field :address, placeholder: "Rua/Av ..., cidade" %><br />
+
+    <%= f.label :tech_stack, 'Tecnologias' %>
+    <%= f.text_field :tech_stack, placeholder: "ReactJS, NodeJS, etc..." %><br />
+
+    <%#TODO - mudar o field do logo para file, além do save na DB  %>
+    <%= f.label :logo, 'Logo' %>
+    <%= f.text_field :logo, placeholder: "url do logo" %><br />
+    
+    <%= f.submit "Salvar" %>
+  <% end %>
+<div>
