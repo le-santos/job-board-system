@@ -3,8 +3,6 @@ class Employee < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  #belongs_to :company, optional: true
   belongs_to :company
 
   private
@@ -16,10 +14,8 @@ class Employee < ApplicationRecord
     if company.nil?
       # Create company
       company = Company.create(domain: company_domain)
-      #Add action no controller para criar a company e redirecionar para edit_company
+      #Add action no controller para redirecionar para edit_company
     end
-    
     self.company = company
-    
   end
 end

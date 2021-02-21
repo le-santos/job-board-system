@@ -60,8 +60,8 @@ feature 'An employee sign up' do
       click_on 'Inscrever-se'
     end
 
-    expect(current_path).to eq('new_company_path')
-    expect(page).to have_content('Criar perfil da empresa')
+    expect(current_path).to eq(edit_company_path(Employee.last.company))
+    expect(page).to have_content('Completar perfil da Empresa')
   end
 
 end

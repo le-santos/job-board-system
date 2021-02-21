@@ -1,0 +1,6 @@
+<h2>Dados da Empresa <%= @company.name %></h2>
+
+<% unless @company.has_empty_profile? == false %>
+  <h2>Completar perfil da Empresa</h2>
+<% end %>
+
