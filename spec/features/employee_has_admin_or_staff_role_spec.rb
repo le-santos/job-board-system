@@ -65,4 +65,17 @@ feature 'Employee role' do
     expect(current_path).to eq(company_path(employee.company))
     expect(company.name).to eq('SuperBots Atendimento') 
   end
+
+  scenario 'as :staff cannot access company edit routes' do
+    company = FactoryBot.create(:company)
+    employee = FactoryBot.create(:employee)
+
+    login_as employee, scope: :employee
+    visit edit_company_path(company)
+
+    expect(current_path).to eq(company_path(employee.company))
+    expect(page).to have_content('Acesso apenas para Admin')
+    expect(employee.role).to eq('staff')
+    expect(page).not_to have_link('Editar perfil da Empresa')
+  end
 end

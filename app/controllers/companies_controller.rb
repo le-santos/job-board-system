@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :check_employee_admin, only: [:create, :edit, :update]
+
   def index
     @companies = Company.all
   end
@@ -29,5 +31,13 @@ class CompaniesController < ApplicationController
                                     :address, 
                                     :tech_stack, 
                                     :logo)
+  end
+
+  def check_employee_admin
+    @company = Company.find(params[:id])
+  
+    unless employee_signed_in? && current_employee.admin? 
+      redirect_to company_path(@company), notice: t('.admin_only')
+    end
   end
 end

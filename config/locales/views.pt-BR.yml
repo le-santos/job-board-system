@@ -14,3 +14,6 @@ pt-BR:
     sessions:
       new:
         sign_in: 'Login'
+  companies:
+    edit:
+      admin_only: 'Acesso apenas para Admin'
