@@ -5,6 +5,8 @@ class Employee < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :company
 
+  enum role: { staff: 0, admin: 10}
+
   private
   
   def search_company
@@ -13,8 +15,8 @@ class Employee < ApplicationRecord
     
     if company.nil?
       # Create company
+      self.role = :admin
       company = Company.create(domain: company_domain)
-      #Add action no controller para redirecionar para edit_company
     end
     self.company = company
   end
