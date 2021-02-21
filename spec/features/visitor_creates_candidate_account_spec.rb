@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'A visitor creates a candidate account' do
-  #TODO usar factory bot para diminuir tamanho dos testes
   scenario 'successfully' do
     company = FactoryBot.create(:company, { name: 'Atendbots' })
     job = FactoryBot.create(:job, company: company)

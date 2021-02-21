@@ -11,7 +11,7 @@
     <p><%= @company.address  %></p>
     <p><%= @company.tech_stack.split(',').join(' -')  %></p>
     
-    <% unless current_employee.staff? %>
+    <% if employee_signed_in? && current_employee.admin? %>
       <%= link_to 'Editar perfil da Empresa', edit_company_path(@company)  %>
     <% end %>
     
