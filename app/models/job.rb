@@ -4,4 +4,8 @@ class Job < ApplicationRecord
   has_many :candidates, through: :job_applications
 
   validates :company_id, presence: true
+
+
+  enum status: { active: 0, inactive: 5 }
+
 end

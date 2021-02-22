@@ -23,6 +23,7 @@ FactoryBot.define do
     deadline { '24/12/2022' }
     quantity_of_positions { 4 }
     company { Company.last || association(:company)}
+    status { 'active' }
   end
   
   factory :candidate do

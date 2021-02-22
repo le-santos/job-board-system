@@ -8,10 +8,12 @@ Rails.application.routes.draw do
 
   devise_for :employees, path: 'employees'
 
-  #FIXME rota jobs#create deveria dentro de company, mas não funcionou
+  #FIXME rota jobs#create dentro de company?
   resources :companies, only: %i[ index show edit update ] do
     resources :jobs, only: %i[ index new ] 
   end
   
-  resources :jobs, only: %i[ index show create edit update ]
+  resources :jobs, only: %i[ index show create edit update ] do
+    post 'inactivate', on: :member
+  end
 end

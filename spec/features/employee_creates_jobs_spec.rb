@@ -55,7 +55,18 @@ feature 'Employee creates new jobs' do
     expect(page).to have_content('Vaga atualizada com sucesso')
   end
 
-  xscenario 'and can inactivate job' do
-    
+  scenario 'and can inactivate job' do
+    employee = FactoryBot.create(:employee )
+    company = employee.company
+    job = FactoryBot.create(:job, { title: 'Desenvolvedor(a) Frontend'} )
+
+    login_as employee, scope: :employee
+    visit job_path(job)
+    click_on 'Desativar Vaga'
+
+    job.reload
+    expect(page).to have_content('Vaga desativada!')
+    expect(page).not_to have_link('Desativar Vaga')
+    expect(job.status).to eq('inactive')
   end
 end

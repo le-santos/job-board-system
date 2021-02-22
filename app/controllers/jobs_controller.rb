@@ -1,8 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_employee!
-  #deve ter um before action para create edit/update
-
-  #bloquear usuarios e permitir apenas employees da empresa
+  before_action :authenticate_employee!, except: %i[ index show ]
 
   def index
     @jobs = Job.all
@@ -39,6 +36,13 @@ class JobsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def inactivate
+    @job = Job.find(params[:id])
+    
+    @job.inactive!
+    redirect_to @job, notice: 'Vaga desativada!'
   end
 
   private
