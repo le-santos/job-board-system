@@ -13,7 +13,17 @@
           <dd><%= j[:candidate].name  %></dd>
           <dt>E-mail:</dt>
           <dd><%= j[:candidate].email  %></dd>
+          <dt>Status:</dt>
+          <dd> <%= I18n.t(".#{j[:job_application].status}") %></dd>
+          <% if j[:job_application].declined? %>
+            <dt>Mensagem enviada:</dt>
+            <dd> <%= j[:job_application].message %></dd>
+          <% end %>
         </dl>
+        <hr>
+        <% if j[:job_application].pending? %>
+          <%= link_to "Recusar Candidatura", edit_job_application_path(j) %>
+        <% end %>
       </div>
     <% end %>
   </section>  

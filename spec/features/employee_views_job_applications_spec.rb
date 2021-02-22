@@ -41,4 +41,26 @@ feature 'Employee views job applications' do
 
     expect(page).to have_content('Nenhuma candidatura recebida')
   end
+
+  scenario 'and can decline application' do
+    employee = FactoryBot.create(:employee )
+    company = employee.company
+    candidate = FactoryBot.create(:candidate)
+    job = FactoryBot.create(:job )
+    job_application = JobApplication.create(candidate: candidate, job: job)
+
+    login_as employee, scope: :employee
+    visit company_path(company)
+    click_on 'Candidaturas Recebidas'
+    click_on 'Recusar Candidatura'
+    within('form') do
+      fill_in 'Mensagem', with: 'Candidato não atende requisitos'
+      click_on 'Enviar'
+    end
+
+    job_application.reload
+    expect(current_path).to eq(job_applications_company_path(company))
+    expect(page).to have_content('Candidatura Recusada')
+    expect(page).to have_content('Candidato não atende requisitos')
+  end
 end
