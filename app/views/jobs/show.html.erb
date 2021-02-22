@@ -18,9 +18,13 @@
 </div>
 
 <div>
-  <% if candidate_signed_in? %>
+  <% if employee_signed_in? && current_employee.company == @job.company %>
+      <%= link_to 'Editar Vaga', edit_job_path(@job)  %>
+  <% elsif candidate_signed_in? %>
     <%= link_to 'Enviar Candidatura', apply_candidate_path, method: :post  %>
-  <% else %>
-    <%= link_to 'Candidatar-se', new_candidate_session_path %>
   <% end %>
+
+  <% unless candidate_signed_in? || employee_signed_in? %>
+    <%= link_to 'Candidatar-se', new_candidate_session_path %>
+  <% end %>  
 </div>

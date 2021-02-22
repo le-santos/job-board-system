@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 
   devise_for :employees, path: 'employees'
 
+  #FIXME rota jobs#create deveria dentro de company, mas não funcionou
   resources :companies, only: %i[ index show edit update ] do
-    resources :jobs, only: %i[ index ]
+    resources :jobs, only: %i[ index new ] 
   end
   
-  resources :jobs, only: %i[ index show ]
+  resources :jobs, only: %i[ index show create edit update ]
 end

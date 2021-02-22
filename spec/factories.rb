@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :employee do
     email { 'jonas@atendbots.com.br' }
     password { '123456' }
-    association :company, factory: :company
+    company { Company.last || association(:company)}
   end
 
   factory :company do
@@ -22,7 +22,7 @@ FactoryBot.define do
     requirements { 'Ruby on Rails, SQLite, HTML, CSS, Bootstrap, Git, TDD' }
     deadline { '24/12/2022' }
     quantity_of_positions { 4 }
-    association :company, factory: :company
+    company { Company.last || association(:company)}
   end
   
   factory :candidate do
