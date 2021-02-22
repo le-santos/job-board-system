@@ -9,6 +9,10 @@
         <p>Vaga: <%= job_app.job.title %></p>
         <p>Empresa: <%= job_app.job.company.name %></p>
         <p>Status: <%= I18n.t(".#{job_app.status}") %></p>
+        
+        <% if job_app.declined? %>
+          <p>Mensagem: <%= job_app.message %></p>
+        <% end %>
       </div>
     <% end %>
   <% end %>

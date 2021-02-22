@@ -9,6 +9,7 @@ class JobApplicationsController < ApplicationController
 
   def update
     @job_application = JobApplication.find(params[:id])
+    #FIXME não deveria alterar status no edit form e enviar nos params?
     @job_application.status = :declined
 
     if @job_application.update(job_app_params)
