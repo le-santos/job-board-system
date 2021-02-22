@@ -16,18 +16,4 @@
 </dl>
 
 <%= link_to 'Editar Perfil', edit_candidate_path(@candidate)  %>
-
-<div class='job-applications'>
-  <% if @candidate.job_applications.nil? %>
-    <h3> Nenhuma Candidatura Aberta </h3>
-  <% else %>
-    <h3>Minhas Candidaturas</h3>
-    <%= @candidate.job_applications.each do |job_app|  %>
-      <div class="job-app-<%=job_app.id%>">
-        <p>Vaga: <%= job_app.job.title %></p>
-        <p>Empresa: <%= job_app.job.company.name %></p>
-        <p>Status: <%= I18n.t(".#{job_app.status}") %></p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+<%= link_to 'Minhas Candidaturas', job_applications_candidate_path(@candidate)  %>

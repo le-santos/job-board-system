@@ -36,6 +36,10 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def job_applications
+    @candidate = Candidate.find(params[:id])
+  end
+
   private
 
   def candidate_params

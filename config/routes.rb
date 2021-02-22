@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :candidates
   resources :candidates, only: %i[ show edit update ] do 
     post 'apply', on: :member
+    get 'job_applications', on: :member
   end
 
   devise_for :employees, path: 'employees'

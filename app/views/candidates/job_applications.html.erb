@@ -1,0 +1,15 @@
+<h2>Minhas Candidaturas</h2>
+
+<div class='job-applications'>
+  <% if @candidate.job_applications.blank? %>
+    <h3> Nenhuma Candidatura Aberta </h3>
+  <% else %>
+    <%= @candidate.job_applications.each do |job_app|  %>
+      <div class="job-app-<%=job_app.id%>">
+        <p>Vaga: <%= job_app.job.title %></p>
+        <p>Empresa: <%= job_app.job.company.name %></p>
+        <p>Status: <%= I18n.t(".#{job_app.status}") %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
