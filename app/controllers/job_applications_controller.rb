@@ -1,4 +1,6 @@
 class JobApplicationsController < ApplicationController
+  before_action :authenticate_employee!, only: [:edit, :update]
+
   def edit
     @candidate = Candidate.find(params[:candidate])
     @job = Job.find(params[:job])
