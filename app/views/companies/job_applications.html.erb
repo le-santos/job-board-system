@@ -1,0 +1,20 @@
+<h2>Candidaturas Recebidas</h2>
+
+<% if @company.job_applications.blank? %>
+  <p>Nenhuma candidatura recebida</p>
+<% else %>
+  <section class='job-application-list'>
+    <% @job_applications.each do |j| %>
+      <div class='job-application-details'>
+        <dl>
+          <dt>Vaga:</dt>
+          <dd><%= j[:job].title %></dd>
+          <dt>Candidato:</dt>
+          <dd><%= j[:candidate].name  %></dd>
+          <dt>E-mail:</dt>
+          <dd><%= j[:candidate].email  %></dd>
+        </dl>
+      </div>
+    <% end %>
+  </section>  
+<% end %>

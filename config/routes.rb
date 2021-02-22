@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   #FIXME rota jobs#create dentro de company?
   resources :companies, only: %i[ index show edit update ] do
     resources :jobs, only: %i[ index new ] 
+    get 'job_applications', on: :member
   end
   
   resources :jobs, only: %i[ index show create edit update ] do
