@@ -61,4 +61,20 @@ feature 'A candidate applies for a job' do
     expect(page).to have_content('É necessário completar seu perfil')
     expect(candidate.job_applications.count).to eq(0)
   end
+
+  scenario 'and job application is set to pending' do
+    company = FactoryBot.create(:company)
+    job = FactoryBot.create(:job, company: company)
+    candidate = FactoryBot.create(:candidate)
+    application = JobApplication.create(candidate: candidate, job: job)
+    
+    login_as candidate, scope: :candidate
+    visit candidate_path(candidate)
+
+    expect(page).to have_content('Minhas Candidaturas')
+    within("div.job-app-#{application.id}") do
+      expect(page).to have_content('Status: Pendente de avaliação')
+    end
+  end
+
 end

@@ -5,6 +5,8 @@ class JobApplication < ApplicationRecord
   validates :candidate, uniqueness: { scope: :job, message: 'já se candidatou para a vaga' }
   validate :profile_cannot_be_blank
 
+  enum status: { pending: 0, accepted: 1, declined: 2 }
+
   attr_reader :attributes
 
   private

@@ -17,3 +17,6 @@ pt-BR:
   companies:
     edit:
       admin_only: 'Acesso apenas para Admin'
+  pending: 'Pendente de avaliação'
+  accepted: 'Aceita'
+  declined: 'Recusada'
