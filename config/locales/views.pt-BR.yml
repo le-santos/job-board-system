@@ -1,22 +1,25 @@
 pt-BR:
   candidates:
     registrations:
-      new: 
-        sign_up: 'Inscrever-se'
+      new:
+        sign_up: "Inscrever-se"
     sessions:
       new:
-        sign_in: 'Login'
+        sign_in: "Login"
   employees:
     registrations:
-      new: 
-        sign_up: 'Inscrever-se'
-        email: 'E-mail'
+      new:
+        sign_up: "Inscrever-se"
+        email: "E-mail"
     sessions:
       new:
-        sign_in: 'Login'
+        sign_in: "Login"
   companies:
     edit:
-      admin_only: 'Acesso apenas para Admin'
-  pending: 'Pendente de avaliação'
-  accepted: 'Aceita'
-  declined: 'Candidatura Recusada'
+      admin_only: "Acesso apenas para Admin"
+  offers:
+    create:
+      success: "Proposta enviada"
+  pending: "Pendente de avaliação"
+  accepted: "Aceita"
+  declined: "Candidatura Recusada"

@@ -6,6 +6,7 @@ class Candidate < ApplicationRecord
   
   validates :name, presence: true
   has_many :job_applications
+  has_many :offers
 
   def applyForJob!(job)
     JobApplication.create!(candidate: self, job: job)      

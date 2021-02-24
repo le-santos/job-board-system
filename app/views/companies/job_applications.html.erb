@@ -23,6 +23,7 @@
         <hr>
         <% if j[:job_application].pending? %>
           <%= link_to "Recusar Candidatura", edit_job_application_path(j) %>
+          <%= link_to "Aceitar/Enviar Proposta", new_job_application_offer_path(j[:job_application]) %>
         <% end %>
       </div>
     <% end %>

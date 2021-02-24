@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :offer do
+    message { "MyString" }
+    salary { 1 }
+    start_date { "2021-02-24" }
+    job { nil }
+    candidate { nil }
+  end
+
   factory :employee do
     email { 'jonas@atendbots.com.br' }
     password { '123456' }

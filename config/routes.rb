@@ -10,13 +10,16 @@ Rails.application.routes.draw do
   devise_for :employees, path: 'employees'
 
   resources :companies, only: %i[ index show edit update ] do
-    resources :jobs, only: %i[ index new ] 
+    resources :jobs, only: %i[ index new ]
     get 'job_applications', on: :member
   end
   
-  resources :job_applications, only: %i[ edit update ]
-  
+  resources :job_applications, only: %i[ edit update ] do
+    resources :offers, only: %i[ new create ]
+  end
+
   resources :jobs, only: %i[ index show create edit update ] do
     post 'inactivate', on: :member
   end
+
 end

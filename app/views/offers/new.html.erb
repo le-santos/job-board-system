@@ -1,0 +1,15 @@
+<h2>Nova Proposta de Emprego</h2>
+
+<%= form_with(model: @offer, url: job_application_offers_path, local: true )  do |f| %>
+  <%= f.label :message, 'Mensagem' %>
+  <%= f.text_area :message, placeholder: "Mensagem para o candidato..." %><br />
+
+  <%= f.label :salary, 'Proposta Salarial' %>
+  <%= f.number_field :salary %><br />
+  
+  <%= f.label :start_date, 'Data de início' %>
+  <%= f.date_field :start_date %><br />
+  
+  <%= f.submit 'Enviar' %>
+<% end %>
+  
