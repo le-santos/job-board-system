@@ -28,8 +28,7 @@ class OffersController < ApplicationController
   def accept
     @offer = Offer.find(params[:id])
     
-    if offer_params[:confirmation_date]
-      @offer.accepted!
+    if @offer.accept?(offer_params[:confirmation_date])
       redirect_to job_applications_candidate_path(@offer.candidate), notice: t('.accepted')
     else
       render job_applications_candidate_path(@offer.candidate_id), alert: 'É necessário confirmar a data de início'
