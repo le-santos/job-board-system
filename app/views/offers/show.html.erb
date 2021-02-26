@@ -19,11 +19,20 @@
 
 <% if @offer.pending? %>
   <div>
-    <%= form_with(model: @offer, url: accept_job_application_offer_path(@offer), method: :post ) do |f| %>
+    <%= form_with(model: @offer, url: accept_job_application_offer_path(@offer), method: :post, class: 'accept-form' ) do |f| %>
       <%= f.label :confirmation_date, "Confirmo data de início em:" %>    
       <%= f.date_field :confirmation_date %>
 
       <%= f.submit "Aceitar Proposta" %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form_with(model: @offer, url: decline_job_application_offer_path(@offer), method: :post, class: 'decline-form' ) do |f| %>
+      <%= f.label :decline_message, "Motivo da recusa" %>    
+      <%= f.text_area :decline_message %>
+
+      <%= f.submit "Recusar" %>
     <% end %>
   </div>
 <% end %>

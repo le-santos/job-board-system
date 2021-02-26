@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   
   resources :job_applications, only: %i[ edit update ] do
     resources :offers, only: %i[ new create show ] do
-      post 'accept', on: :member
+      member do
+        post 'accept'
+        post 'decline'
+      end
     end
   end
 

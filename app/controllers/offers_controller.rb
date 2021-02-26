@@ -36,9 +36,23 @@ class OffersController < ApplicationController
     end
   end
 
+  def decline
+    @offer = Offer.find(params[:id])
+    
+    if offer_params[:decline_message]
+      @offer.decline_message = offer_params[:decline_message]
+      @offer.declined!
+      redirect_to job_applications_candidate_path(@offer.candidate), notice: t('.declined')
+    else
+      render job_applications_candidate_path(@offer.candidate_id), alert: 'É necessário preencher o motivo da recusa'
+    end
+  end
+
   private
 
   def offer_params
-    params.require(:offer).permit(:message, :salary, :start_date, :job_id, :candidate_id, :confirmation_date)
+    params.require(:offer).permit(:message, :salary, :start_date, 
+                                  :job_id, :candidate_id, 
+                                  :confirmation_date, :decline_message)
   end
 end

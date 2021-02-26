@@ -32,7 +32,7 @@ feature 'Candidate views job offers' do
     within("div.job-app-#{application.id}") do
       click_on 'Ver Proposta'
     end
-    within('form') do
+    within('form.accept-form') do
       fill_in 'Confirmo data de início em:', with: '31-12-2021'
       click_on 'Aceitar Proposta'
     end
@@ -43,11 +43,11 @@ feature 'Candidate views job offers' do
     expect(page).to have_content('Proposta aceita')
   end
 
-  xscenario 'and decline job offers' do
+  scenario 'and decline job offers' do
     company = FactoryBot.create(:company)
     job = FactoryBot.create(:job)
     candidate = FactoryBot.create(:candidate)
-    application = JobApplication.create(candidate: candidate, job: job)
+    application = JobApplication.create(candidate: candidate, job: job, status: :accepted)
     offer = FactoryBot.create(:offer)
     
     login_as candidate, scope: :candidate
@@ -55,14 +55,15 @@ feature 'Candidate views job offers' do
     within("div.job-app-#{application.id}") do
       click_on 'Ver Proposta'
     end
-    click_on 'Aceitar Proposta'
+    within('form.decline-form') do
+      fill_in 'Motivo da recusa', with: 'Salário incompatível'
+      click_on 'Recusar'
+    end
 
-    expect(offer.status.accepted?).to be_truthy
+    offer.reload
+    expect(offer.declined?).to be_truthy
     expect(page).to have_content('Minhas Candidaturas')
-    expect(page).to have_content('Proposta aceita')
-  end
-
-  xscenario 'and quantity of positions on jobs decrease' do
-    
+    expect(page).to have_content('Proposta recusada')
+    expect(offer.decline_message).to eq('Salário incompatível')
   end
 end
