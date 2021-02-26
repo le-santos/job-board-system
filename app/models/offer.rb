@@ -3,6 +3,7 @@ class Offer < ApplicationRecord
   belongs_to :candidate
 
   validates :message, :salary, :start_date, presence: true
+  validate :job_must_be_active
 
   enum status: { pending: 0, accepted: 1, declined: 2 }
 
@@ -13,6 +14,14 @@ class Offer < ApplicationRecord
       true
     else
       false
+    end
+  end
+
+  private
+  
+  def job_must_be_active
+    unless job.active?
+      errors.add(:job, "não está mais aberta")
     end
   end
 end
