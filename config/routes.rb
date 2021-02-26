@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   end
   
   resources :job_applications, only: %i[ edit update ] do
-    resources :offers, only: %i[ new create ]
+    resources :offers, only: %i[ new create show ] do
+      post 'accept', on: :member
+    end
   end
 
   resources :jobs, only: %i[ index show create edit update ] do

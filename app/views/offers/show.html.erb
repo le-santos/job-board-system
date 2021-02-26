@@ -1,0 +1,29 @@
+<h2>Proposta de Emprego</h2>
+
+<div class='offer-details'>
+  <dl>
+    <dt>Vaga:</dt>
+    <dd><%= @offer.message  %></dd>
+    <dt>Vaga:</dt>
+    <dd><%= @offer.job.title  %></dd>
+    <dt>Empresa:</dt>
+    <dd><%= @offer.job.company.name  %></dd>
+    <dt>Data de início:</dt>
+    <dd><%= @offer.start_date %></dd>
+    <dt>Salário:</dt>
+    <dd><%= @offer.salary %><dd>
+    <dt>Status:</dt>
+    <dd><%= @offer.status %><dd>
+  </dl>
+</div>
+
+<% if @offer.pending? %>
+  <div>
+    <%= form_with(model: @offer, url: accept_job_application_offer_path(@offer), method: :post ) do |f| %>
+      <%= f.label :confirmation_date, "Confirmo data de início em:" %>    
+      <%= f.date_field :confirmation_date %>
+
+      <%= f.submit "Aceitar Proposta" %>
+    <% end %>
+  </div>
+<% end %>

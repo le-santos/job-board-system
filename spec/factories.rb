@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :offer do
-    message { "MyString" }
-    salary { 1 }
-    start_date { "2021-02-24" }
-    job { nil }
-    candidate { nil }
+    message { "Candidatura aceita! Avalie nossa proposta" }
+    salary { 3000 }
+    start_date { "31-12-2021" }
+    job { Job.last || association(:job) }
+    candidate { Candidate.last || association(:candidate) }
   end
 
   factory :employee do

@@ -20,6 +20,8 @@ pt-BR:
   offers:
     create:
       success: "Proposta enviada"
+    accept:
+      accepted: 'Proposta aceita' 
   pending: "Pendente de avaliação"
   accepted: "Aceita"
   declined: "Candidatura Recusada"
