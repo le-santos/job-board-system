@@ -142,6 +142,8 @@ pt-BR:
         sign_in_with_provider: Entrar com %{provider}
         sign_up: Inscrever-se
         log_out: Sair
+        don_t_have_account: "Não tem conta?"
+        create_profile: "Criar conta"
       minimum_password_length:
         one: "(Mínimo de %{count} caractere)"
         other: "(Mínimo de %{count} caracteres)"

@@ -1,11 +1,32 @@
 pt-BR:
+  job_applications:
   candidates:
+    edit:
+      save: "Salvar"
+    job_applications:
+      zero_applications: "Nenhuma Candidatura Aberta"
+      job: "Vaga"
+      company: "Empresa"
+      status: "Status"
+      message: "Mensagem"
+      check_offer: "Ver Proposta"
+      pending: "Pendente de avaliação"
+      accepted: "Aceita"
+      declined: "Candidatura Recusada"
     registrations:
       new:
         sign_up: "Inscrever-se"
     sessions:
       new:
         sign_in: "Login"
+        don_t_have_account: "Não tem conta?"
+    show:
+      email: "Email"
+      phone: "Fone"
+      biography: "Biografia"
+      skills: "Habilidades"
+      edit_profile: "Editar Perfil"
+      my_applications: "Minhas Candidaturas"
   employees:
     registrations:
       new:

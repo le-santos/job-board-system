@@ -2,22 +2,21 @@
 
 <div class='job-applications'>
   <% if @candidate.job_applications.blank? %>
-    <h3> Nenhuma Candidatura Aberta </h3>
+    <h3> <%= t('.zero_applications')%> </h3>
   <% else %>
     <% @candidate.job_applications.each do |job_app|  %>
       <div class="job-app-<%=job_app.id%>">
-        <p>Vaga: <%= job_app.job.title %></p>
-        <p>Empresa: <%= job_app.job.company.name %></p>
-        <p>Status: <%= I18n.t(".#{job_app.status}") %></p>
+        <p> <%= t('.job') %>: <%= job_app.job.title %></p>
+        <p><%= t('.company') %>: <%= job_app.job.company.name %></p>
+        <p><%= t('.status') %>: <%= I18n.t(".#{job_app.status}") %></p>
         
         <% if job_app.declined? %>
-          <p>Mensagem: <%= job_app.message %></p>
+          <p><%= t('.message') %>: <%= job_app.message %></p>
         <% end %>
         
         <% if job_app.accepted? %>
-          <%= link_to 'Ver Proposta', job_application_offer_path(job_app)  %>
+          <%= link_to t('.check_offer'), job_application_offer_path(job_app)  %>
         <% end %>
-        
       </div>
     <% end %>
   <% end %>
