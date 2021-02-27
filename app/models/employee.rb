@@ -1,4 +1,5 @@
 class Employee < ApplicationRecord
+  before_validation :domain_check
   before_validation :search_company
 
   devise :database_authenticatable, :registerable,
@@ -8,7 +9,7 @@ class Employee < ApplicationRecord
   enum role: { staff: 0, admin: 10}
 
   private
-  
+
   def search_company
     company_domain = email.gsub(/[\S]*@/, 'www.')
     company = Company.find_by(domain: company_domain)
@@ -20,4 +21,21 @@ class Employee < ApplicationRecord
     end
     self.company = company
   end
+
+  def blocked_domains 
+    [ 'msn.com','icloud.com', 'googlemail.com',
+      'att.net', 'gmail.com', 'ymail.com',
+      'rocketmail.com', 'aol.com', 'yahoo.com', 
+      "hotmail.com", 'live.com', 'outlook.com'
+    ]
+  end
+
+  def domain_check
+    employee_domain = email.split('@').last
+
+    if blocked_domains.include?(employee_domain)
+      errors.add(:email, 'deve ser um email corporativo')
+    end
+  end
+
 end

@@ -37,6 +37,20 @@ feature 'An employee sign up' do
     expect(page).to have_content('E-mail já está em uso')
   end
 
+  scenario 'and must use a valid company email' do
+    visit root_path
+    click_on 'Login para Empresas'
+    click_on 'Criar conta'
+    within('form') do
+      fill_in 'E-mail', with: 'jonas@gmail.com'
+      fill_in 'Senha',  with: '123456'
+      fill_in 'Confirme sua senha', with: '123456'
+      click_on 'Inscrever-se'
+    end
+
+    expect(page).to have_content('E-mail deve ser um email corporativo')
+  end
+
   scenario 'and can logout' do
     employee = FactoryBot.create(:employee)
     login_as employee, scope: :employee
