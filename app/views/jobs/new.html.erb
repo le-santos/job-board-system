@@ -1,27 +1,27 @@
 <h2>Criar nova vaga para <%= Company.find(params[:company_id]).name  %> </h2>
 
 <%= form_with(model: @job) do |f| %>
-  <%= f.label :title, 'Título da Vaga' %>
+  <%= f.label :title %>
   <%= f.text_field :title, placeholder: "Ex: Desenvolvedor Java Pleno " %><br />
 
-  <%= f.label :details, 'Detalhes' %>
+  <%= f.label :details %>
   <%= f.text_field :details, placeholder: "Ex: Desenvolver aplicações para ..." %><br />
 
-  <%= f.label :salary, 'Salário' %>
+  <%= f.label :salary %>
   <%= f.number_field :salary %><br />
 
-  <%= f.label :level, 'Nível' %>
+  <%= f.label :level %>
   <%= f.text_field :level %><br />
 
-  <%= f.label :requirements, 'Requisitos' %>
+  <%= f.label :requirements %>
   <%= f.text_field :requirements, placeholder: "HTML, CSS, etc" %><br />
 
-  <%= f.label :deadline, 'Data Limite' %>
+  <%= f.label :deadline %>
   <%= f.text_field :deadline %><br />
 
-  <%= f.label :quantity_of_positions, 'Quantidade de Vagas' %>
+  <%= f.label :quantity_of_positions %>
   <%= f.number_field :quantity_of_positions %><br />
 
-  <%= f.submit "Salvar" %>
+  <%= f.submit t('.save') %>
 <% end %>
   

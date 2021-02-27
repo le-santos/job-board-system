@@ -2,34 +2,34 @@
 
 <div class='job-details'>
   <dl>
-    <dt>Vaga:</dt>
+    <dt><%= t('.title') %></dt>
     <dd><%= @job.title  %></dd>
-    <dt>Empresa:</dt>
+    <dt><%= t('.company') %></dt>
     <dd><%= @job.company.name  %></dd>
-    <dt>Detalhes:</dt>
+    <dt><%= t('.details') %></dt>
     <dd><%= @job.details %></dd>
-    <dt>Requisitos:</dt>
+    <dt><%= t('.requirements') %></dt>
     <dd><%= @job.requirements %></dd>
-    <dt>Data limite:</dt>
+    <dt><%= t('.deadline') %></dt>
     <dd><%= @job.deadline %></dd>
-    <dt>Quantidade de vagas:</dt>
+    <dt><%= t('.quantity_of_positions') %></dt>
     <dd><%= @job.quantity_of_positions %><dd>
-    <dt>Status:</dt>
+    <dt><%= t('.status') %></dt>
     <dd><%= @job.status %><dd>
   </dl>
 </div>
 
 <div>
   <% if employee_signed_in? && current_employee.company == @job.company %>
-      <%= link_to 'Editar Vaga', edit_job_path(@job)  %>
+      <%= link_to t('.edit_job'), edit_job_path(@job)  %>
       <% unless @job.inactive? %>
-        <%= link_to 'Desativar Vaga', inactivate_job_path(@job), method: :post %>
+        <%= link_to t('.inactive_job'), inactivate_job_path(@job), method: :post %>
       <% end %>
   <% elsif candidate_signed_in? && @job.active? && !current_candidate.has_applied_for?(@job) %>
-    <%= link_to 'Enviar Candidatura', apply_candidate_path, method: :post  %>
+    <%= link_to t('.apply_for_job'), apply_candidate_path, method: :post  %>
   <% end %>
 
   <% unless candidate_signed_in? || employee_signed_in? %>
-    <%= link_to 'Candidatar-se', new_candidate_session_path %>
+    <%= link_to t('.apply'), new_candidate_session_path %>
   <% end %>  
 </div>

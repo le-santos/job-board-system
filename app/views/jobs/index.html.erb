@@ -1,23 +1,23 @@
 <h2>Lista de Vagas</h2>
 
 <% if @jobs.blank? %>
-  <p>Nenhuma vaga disponível no momento</p>
+  <p><%= t('.jobs_blank') %></p>
 <% else %>
   <section class='job-list'>
     <% @jobs.each do |job| %>
       <div class='job-details'>
         <dl>
-          <dt>Vaga:</dt>
+          <dt><%= t('.title') %></dt>
           <dd><%= job.title  %></dd>
-          <dt>Empresa:</dt>
+          <dt><%= t('.company') %></dt>
           <dd><%= job.company.name  %></dd>
-          <dt>Detalhes:</dt>
+          <dt><%= t('.details') %></dt>
           <dd><%= job.details %></dd>
-          <dt>Requisitos:</dt>
+          <dt><%= t('.requirements') %></dt>
           <dd><%= job.requirements %></dd>
-          <dt>Data limite:</dt>
+          <dt><%= t('.deadline') %></dt>
           <dd><%= job.deadline %></dd>
-          <dt>Quantidade de vagas:</dt>
+          <dt><%= t('.quantity_of_positions') %></dt>
           <dd><%= job.quantity_of_positions %><dd>
         </dl>
       </div>

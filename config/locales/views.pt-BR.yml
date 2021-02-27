@@ -1,5 +1,8 @@
 pt-BR:
-  job_applications:
+  home:
+    index:
+      companies: "Empresas" 
+      jobs: "Vagas"
   candidates:
     edit:
       save: "Salvar"
@@ -60,6 +63,41 @@ pt-BR:
       jobs_blank: "Nenhuma vaga disponível no momento"
       job_details: "Detalhes da Vaga"
       up_to: "Até"
+  job_applications:
+    edit:
+      job: "Vaga"
+      candidate: "Candidato"
+      email: "E-mail"
+      message: "Mensagem"
+      send: "Enviar"
+  jobs:
+    edit:
+      save: 'Salvar' 
+    index:
+      title: 'Título da Vaga'
+      company: 'Empresa'
+      details: 'Detalhes'
+      salary: 'Salário'
+      level: 'Nível'
+      requirements: 'Requisitos'
+      deadline: 'Data Limite'
+      quantity_of_positions: 'Quantidade de Vagas'
+      jobs_blank: "Nenhuma vaga disponível no momento"
+    new:
+      save: 'Salvar'
+    show:
+      title: 'Título da Vaga'
+      company: 'Empresa'
+      details: 'Detalhes'
+      salary: 'Salário'
+      level: 'Nível'
+      requirements: 'Requisitos'
+      deadline: 'Data Limite'
+      quantity_of_positions: 'Quantidade de Vagas'
+      edit_job: 'Editar Vaga'
+      inactive_job: 'Desativar Vaga'
+      apply_for_job: 'Enviar Candidatura'
+      apply: 'Candidatar-se'
   offers:
     create:
       success: "Proposta enviada"

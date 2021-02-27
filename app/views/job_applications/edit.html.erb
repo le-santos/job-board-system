@@ -2,11 +2,11 @@
 
 <div class='job-application-details'>
   <dl>
-    <dt>Vaga:</dt>
+    <dt><%= t('.job') %></dt>
     <dd><%= @job.title %></dd>
-    <dt>Candidato:</dt>
+    <dt><%= t('.candidate') %></dt>
     <dd><%= @candidate.name  %></dd>
-    <dt>E-mail:</dt>
+    <dt><%= t('.email') %></dt>
     <dd><%= @candidate.email  %></dd>
   </dl>
 </div>
@@ -14,8 +14,8 @@
 </div>
   <h3>Mensagem para o candidato</h3>
   <%= form_with model: @job_application do |f| %>
-    <%= f.label :message, 'Mensagem' %>
+    <%= f.label :message, t('.message') %>
     <%= f.text_area :message, placeholder: "Motivo da recusa..." %><br />
-    <%= f.submit "Enviar" %>
+    <%= f.submit t('.send') %>
   <% end %>
 <div>

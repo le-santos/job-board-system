@@ -15,7 +15,15 @@ pt-BR:
         description: Descrição
         address: Endereço
         tech_stack: Tecnologias
-        logo: Logo 
+        logo: Logo
+      job:
+        title: 'Título da Vaga'
+        details: 'Detalhes'
+        salary: 'Salário'
+        level: 'Nível'
+        requirements: 'Requisitos'
+        deadline: 'Data Limite'
+        quantity_of_positions: 'Quantidade de Vagas'
   date:
     abbr_day_names:
     - dom
