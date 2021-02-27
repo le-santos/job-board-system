@@ -60,4 +60,15 @@ feature 'A candidate applies for a job' do
       expect(page).to have_content('Status: Pendente de avaliação')
     end
   end
+
+  scenario 'and cannot apply if job is not active' do
+    company = FactoryBot.create(:company)
+    job = FactoryBot.create(:job, {status: 'inactive'})
+    candidate = FactoryBot.create(:candidate)
+    
+    login_as candidate, scope: :candidate
+    visit job_path(job)
+    
+    expect(page).not_to have_content('Enviar Candidatura')
+  end
 end
