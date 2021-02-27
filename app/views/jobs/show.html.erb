@@ -25,7 +25,7 @@
       <% unless @job.inactive? %>
         <%= link_to 'Desativar Vaga', inactivate_job_path(@job), method: :post %>
       <% end %>
-  <% elsif candidate_signed_in? && @job.active? %>
+  <% elsif candidate_signed_in? && @job.active? && !current_candidate.has_applied_for?(@job) %>
     <%= link_to 'Enviar Candidatura', apply_candidate_path, method: :post  %>
   <% end %>
 

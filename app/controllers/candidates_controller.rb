@@ -24,7 +24,7 @@ class CandidatesController < ApplicationController
     job = Job.find(params[:id])
 
     begin
-      current_candidate.applyForJob!(job)
+      current_candidate.apply_for_job!(job)
       redirect_to job, notice: 'Candidatura enviada'
 
     rescue ActiveRecord::RecordInvalid => exception

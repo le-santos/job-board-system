@@ -27,9 +27,8 @@ feature 'A candidate applies for a job' do
     
     login_as candidate, scope: :candidate
     visit job_path(job)
-    click_on 'Enviar Candidatura'
 
-    expect(page).to have_content('Já existe uma candidatura para essa vaga')
+    expect(page).not_to have_link('Enviar Candidatura')
     expect(candidate.job_applications.count).to eq(1)
   end
 
