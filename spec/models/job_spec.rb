@@ -32,10 +32,15 @@ RSpec.describe Job, type: :model do
     end
   end
 
-  xcontext '#job_expired?' do
-    it '' do
-      
+  context 'deadline date' do
+    it 'when crossed changes job status to expired' do
+      job = FactoryBot.create(:job, { deadline: '12/12/2022' })
+      date_yesterday = Date.today - 1
+
+      job.update(deadline: date_yesterday)
+
+      job.reload
+      expect(job.status).to eq('expired')
     end
   end
-
 end
