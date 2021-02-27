@@ -3,9 +3,9 @@
 <div class='offer-details'>
   <dl>
     <dt>Vaga:</dt>
-    <dd><%= @offer.message  %></dd>
-    <dt>Vaga:</dt>
     <dd><%= @offer.job.title  %></dd>
+    <dt>Mensagem:</dt>
+    <dd><%= @offer.message  %></dd>
     <dt>Empresa:</dt>
     <dd><%= @offer.job.company.name  %></dd>
     <dt>Data de início:</dt>
@@ -20,19 +20,19 @@
 <% if @offer.pending? %>
   <div>
     <%= form_with(model: @offer, url: accept_job_application_offer_path(@offer), method: :post, class: 'accept-form' ) do |f| %>
-      <%= f.label :confirmation_date, "Confirmo data de início em:" %>    
+      <%= f.label :confirmation_date, t('.confirmation_date') %>    
       <%= f.date_field :confirmation_date %>
 
-      <%= f.submit "Aceitar Proposta" %>
+      <%= f.submit t('.accept') %>
     <% end %>
   </div>
 
   <div>
     <%= form_with(model: @offer, url: decline_job_application_offer_path(@offer), method: :post, class: 'decline-form' ) do |f| %>
-      <%= f.label :decline_message, "Motivo da recusa" %>    
+      <%= f.label :decline_message, t('.decline_message') %>    
       <%= f.text_area :decline_message %>
 
-      <%= f.submit "Recusar" %>
+      <%= f.submit t('.decline') %>
     <% end %>
   </div>
 <% end %>

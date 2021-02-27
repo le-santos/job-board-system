@@ -7,7 +7,10 @@ pt-BR:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
     models:
+      candidate: Candidato
       company: Empresa
+      job: Vaga
+      offer: Proposta de Emprego
     attributes:
       company:
         name: Nome
@@ -24,6 +27,11 @@ pt-BR:
         requirements: 'Requisitos'
         deadline: 'Data Limite'
         quantity_of_positions: 'Quantidade de Vagas'
+      offer:
+        message: 'Mensagem'
+        salary: 'Proposta Salarial'
+        start_date: 'Data de início'
+        decline_message: 'Motivo da Recusa'
   date:
     abbr_day_names:
     - dom

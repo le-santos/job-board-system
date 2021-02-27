@@ -1,4 +1,10 @@
 pt-BR:
+  layouts:
+    application:
+      home: 'Início'
+      sign_out: 'Sair'
+      companies_login: 'Login para Empresas'
+      candidates_login: 'Login para Candidatos'
   home:
     index:
       companies: "Empresas" 
@@ -99,6 +105,13 @@ pt-BR:
       apply_for_job: 'Enviar Candidatura'
       apply: 'Candidatar-se'
   offers:
+    new:
+      send: 'Enviar'
+    show:
+      confirmation_date: 'Confirmo data de início em:'
+      accept: 'Aceitar Proposta'
+      decline_message: 'Motivo da recusa'
+      decline: 'Recusar'
     create:
       success: "Proposta enviada"
     accept:
