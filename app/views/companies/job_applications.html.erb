@@ -1,29 +1,29 @@
 <h2>Candidaturas Recebidas</h2>
 
 <% if @company.job_applications.blank? %>
-  <p>Nenhuma candidatura recebida</p>
+  <p><%= t('.zero_applications')  %></p>
 <% else %>
   <section class='job-application-list'>
     <% @job_applications.each do |j| %>
       <div class='job-application-details'>
         <dl>
-          <dt>Vaga:</dt>
+          <dt><%= "#{t('.job')}:" %></dt>
           <dd><%= j[:job].title %></dd>
-          <dt>Candidato:</dt>
+          <dt><%= "#{t('.candidate')}:"  %></dt>
           <dd><%= j[:candidate].name  %></dd>
-          <dt>E-mail:</dt>
+          <dt><%= "#{t('.email')}:" %></dt>
           <dd><%= j[:candidate].email  %></dd>
-          <dt>Status:</dt>
+          <dt><%= "#{t('.status')}:" %></dt>
           <dd> <%= I18n.t(".#{j[:job_application].status}") %></dd>
           <% if j[:job_application].declined? %>
-            <dt>Mensagem enviada:</dt>
+            <dt><%= "#{t('.message')}:" %></dt>
             <dd> <%= j[:job_application].message %></dd>
           <% end %>
         </dl>
         <hr>
         <% if j[:job_application].pending? %>
-          <%= link_to "Recusar Candidatura", edit_job_application_path(j) %>
-          <%= link_to "Aceitar/Enviar Proposta", new_job_application_offer_path(j[:job_application]) %>
+          <%= link_to t('.decline_application'), edit_job_application_path(j) %>
+          <%= link_to t('.accept_application'), new_job_application_offer_path(j[:job_application]) %>
         <% end %>
       </div>
     <% end %>

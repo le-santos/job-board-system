@@ -42,7 +42,7 @@ feature 'Employee creates new jobs' do
     login_as employee, scope: :employee
     visit company_path(company)
     within("div.job-#{job.id}") do
-      click_on 'Detalhes da vaga'
+      click_on 'Detalhes da Vaga'
     end
     click_on 'Editar Vaga'
     within('form') do

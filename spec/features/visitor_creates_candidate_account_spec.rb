@@ -9,7 +9,7 @@ feature 'A visitor creates a candidate account' do
     click_on 'Empresas'
     click_on 'Atendbots'
     within("div.job-#{job.id}") do
-      click_on 'Detalhes da vaga'
+      click_on 'Detalhes da Vaga'
     end
     click_on 'Candidatar-se'
     click_on 'Criar conta'

@@ -36,8 +36,30 @@ pt-BR:
       new:
         sign_in: "Login"
   companies:
+    index:
+      zero_company: "Nenhuma empresa cadastrada"
     edit:
       admin_only: "Acesso apenas para Admin"
+      complete_profile: "Completar perfil da Empresa"
+      save: 'Salvar'
+    job_applications:
+      zero_applications: "Nenhuma Candidatura recebida"
+      job: "Vaga"
+      candidate: "Candidato"
+      email: "E-mail"
+      status: "Status"
+      message: "Mensagem enviada"
+      decline_application: "Recusar Candidatura"
+      accept_application: "Aceitar/Enviar Proposta"
+    show:
+      back: 'Voltar'
+      company_applications: "Candidaturas Recebidas"
+      company_jobs: "Vagas da Empresa"
+      create_jobs: "Criar Vagas"
+      edit_company_profile: "Editar perfil da Empresa"
+      jobs_blank: "Nenhuma vaga disponível no momento"
+      job_details: "Detalhes da Vaga"
+      up_to: "Até"
   offers:
     create:
       success: "Proposta enviada"

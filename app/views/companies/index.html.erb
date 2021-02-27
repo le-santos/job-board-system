@@ -2,7 +2,7 @@
 
 
 <% if @companies.blank? %>
-  <p>Nenhuma empresa cadastrada</p>
+  <p><%= t('.zero_company')  %></p>
 <% else %>
   <% @companies.each do |company|  %>
     <div>

@@ -39,7 +39,7 @@ feature 'Employee views job applications' do
     visit company_path(company)
     click_on 'Candidaturas Recebidas'
 
-    expect(page).to have_content('Nenhuma candidatura recebida')
+    expect(page).to have_content('Nenhuma Candidatura recebida')
   end
 
   scenario 'and can decline application' do

@@ -1,7 +1,7 @@
 <h2>Detalhes da empresa</h2>
 
 <div>
-  <%= link_to 'Voltar', companies_path %>
+  <%= link_to t('.back'), companies_path %>
 </div>
 
 <div>
@@ -12,27 +12,26 @@
     <p><%= @company.tech_stack.split(',').join(' -')  %></p>
     
     <% if employee_signed_in? && current_employee.company == @company %>
-      <%= link_to 'Criar Vagas', new_company_job_path(@company)  %>
-      <%= link_to 'Candidaturas Recebidas', job_applications_company_path(@company)  %>
+      <%= link_to t('.create_jobs'), new_company_job_path(@company)  %>
+      <%= link_to t('.company_applications'), job_applications_company_path(@company)  %>
       <% if current_employee.admin? %>
-        <%= link_to 'Editar perfil da Empresa', edit_company_path(@company)  %>
+        <%= link_to t('.edit_company_profile'), edit_company_path(@company)  %>
       <% end %>
     <% end %>
     
 </div>
 
 <% if @company.jobs.blank? %>
-  <h3>Nenhuma vaga disponível no momento</h3>
+  <h3><%= t('.jobs_blank') %></h3>
 <% else %>
   <section class='job-list'>
-    <h2>Vagas da empresa</h2>
+    <h2><%= t('.company_jobs') %></h2>
     <% @company.jobs.each do |job|  %>
       <div class="job-<%=job.id%>">
         <h3><%= job.title %></h3>
-        <%#TODO - adicionar i18n para formatar currency %>
         <p><%= job.level %></p>
-        <p>Até <%= number_to_currency(job.salary, unit: "R$", delimiter: '.', precision: 0) %></p>
-        <%= link_to 'Detalhes da vaga', job_path(job)  %>
+        <p><%=t('.up_to') %> <%= number_to_currency(job.salary, delimiter: '.', precision: 0) %></p>
+        <%= link_to t('.job_details'), job_path(job)  %>
       </div>
     <% end %>
   </section>

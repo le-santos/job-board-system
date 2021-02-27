@@ -1,32 +1,31 @@
 <h2>Dados da Empresa <%= @company.name %></h2>
 
 <% unless @company.has_empty_profile? == false %>
-  <h3>Completar perfil da Empresa</h3>
+  <h3><%= t('.complete_profile')%></h3>
 <% end %>
 
-<%#TODO - add i18n para as labels de company edit  %>
 </div>
   <%= form_with model: @company do |f| %>
-    <%= f.label :name, 'Nome' %>
+    <%= f.label :name %>
     <%= f.text_field :name, placeholder: "Nome da empresa" %><br />
 
     <%#TODO Verificar se esse disabled funciona  %>
-    <%= f.label :domain, 'website' %>
+    <%= f.label :domain %>
     <%= f.text_field :domain, disabled: true, placeholder: @company.domain %><br />
 
-    <%= f.label :description, 'Descrição' %>
+    <%= f.label :description %>
     <%= f.text_field :description, placeholder: "Empresa de ..." %><br />
 
-    <%= f.label :address, 'Endereço' %>
+    <%= f.label :address %>
     <%= f.text_field :address, placeholder: "Rua/Av ..., cidade" %><br />
 
-    <%= f.label :tech_stack, 'Tecnologias' %>
+    <%= f.label :tech_stack %>
     <%= f.text_field :tech_stack, placeholder: "ReactJS, NodeJS, etc..." %><br />
 
     <%#TODO - mudar o field do logo para file, além do save na DB  %>
-    <%= f.label :logo, 'Logo' %>
+    <%= f.label :logo %>
     <%= f.text_field :logo, placeholder: "url do logo" %><br />
     
-    <%= f.submit "Salvar" %>
+    <%= f.submit t('.save') %>
   <% end %>
 <div>
