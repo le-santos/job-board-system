@@ -29,7 +29,7 @@ A aplicação tem duas funcinalidades básicas:
 
 :ballot_box_with_check: Todos os colaborares associados podem ver detalhes da empresa, criar vagas e visualizar candidaturas
 
-:black_square_button:  Todos os colaboradores podem recusar ou aprovar candidaturas, enviando propostas
+:ballot_box_with_check:  Todos os colaboradores podem recusar ou aprovar candidaturas, enviando propostas
 
 
 ### Usuário Visitante:
@@ -44,13 +44,13 @@ A aplicação tem duas funcinalidades básicas:
 
 :ballot_box_with_check: Pode vizualizar suas candidaturas enviadas
 
-:black_square_button: Pode vizualizar propostas recebidas, as quais pode aprovar ou recusar 
+:ballot_box_with_check: Pode vizualizar propostas recebidas, as quais pode aprovar ou recusar 
 
 ### Vagas:
 
 :ballot_box_with_check: Pode ser desativagas por um colaborador 
 
-:black_square_button: São desativadas automaticamente após zerar a quantidade disponível 
+:ballot_box_with_check: São desativadas automaticamente após zerar a quantidade disponível 
 
 
 ### Próximos passos
