@@ -6,7 +6,7 @@ RSpec.describe Candidate, type: :model do
       candidate = FactoryBot.create(:candidate)
       job = FactoryBot.create(:job)
     
-      job_app = candidate.applyForJob!(job)
+      job_app = candidate.apply_for_job!(job)
 
       expect(candidate.job_applications.size).to eq(1)
       expect(candidate.job_applications.last).to eq(job_app)
@@ -17,7 +17,7 @@ RSpec.describe Candidate, type: :model do
       job = FactoryBot.create(:job)
       JobApplication.create!(candidate: candidate, job: job)
       
-      expect { candidate.applyForJob!(job) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { candidate.apply_for_job!(job) }.to raise_error(ActiveRecord::RecordInvalid)
       expect(candidate.job_applications.size).to eq(1)
     end
     
@@ -25,7 +25,7 @@ RSpec.describe Candidate, type: :model do
       candidate = FactoryBot.create(:candidate, { cpf: '' })
       job = FactoryBot.create(:job)
       
-      expect { candidate.applyForJob!(job) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect { candidate.apply_for_job!(job) }.to raise_error(ActiveRecord::RecordInvalid)
       expect(candidate.job_applications.size).to eq(0)
     end
   end
