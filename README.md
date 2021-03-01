@@ -24,6 +24,7 @@ ruby --version
 - [Devise](https://github.com/heartcombo/devise)  4.7.3
 - [Rspec_rails](https://github.com/rspec/rspec-rails) 4.0.2 
 - [Capybara](https://github.com/teamcapybara/capybara) 3.34.0 
+- [SimpleCov](https://github.com/simplecov-ruby/simplecov) 0.12.2 
 - [Factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) 6.1.0 
 
 ## Instalando a aplicação 
@@ -83,9 +84,13 @@ Para os testes foram utilizadas as gems **Rspec** e **Capybara**, além da **Fac
 ```bash
  # Rode todos os testes com: 
  rspec 
+
  # Ou usando o bundle exec: 
  bundle exec rspec 
 ```
+
+Além dessas, foi incluída a gem **SimpleCov** para verificar a cobertura de testes da aplicação. Ao rodar os testes, será gerado um arquivo em `coverage/index.html` com os dados gerados pelo simpleCov.
+
 
 ## Funcionalidades
 
