@@ -22,11 +22,11 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = JobApplication.find(params[:id]).offer
+    @offer = Offer.find_by(job_application: params[:job_application_id])
   end
 
   def accept
-    @offer = Offer.find(params[:id])
+    @offer = Offer.find_by(job_application: params[:job_application_id])
     
     if @offer.accept?(offer_params[:confirmation_date])
       redirect_to job_applications_candidate_path(@offer.candidate), notice: t('.accepted')

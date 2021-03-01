@@ -9,11 +9,11 @@
     <dt>Empresa:</dt>
     <dd><%= @offer.job.company.name  %></dd>
     <dt>Data de início:</dt>
-    <dd><%= @offer.start_date %></dd>
+    <dd><%= l(@offer.start_date) %></dd>
     <dt>Salário:</dt>
-    <dd><%= @offer.salary %><dd>
+    <dd><%= number_to_currency(@offer.salary) %><dd>
     <dt>Status:</dt>
-    <dd><%= @offer.status %><dd>
+    <dd><%= I18n.t(".#{@offer.status}") %><dd>
   </dl>
 </div>
 
