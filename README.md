@@ -58,6 +58,24 @@ rails server
 ``` 
 Quando o servidor estiver no ar, a aplicação estará disponível no endereço: https://localhost:3000 
 
+## Rodando a aplicação
+
+Para testar a navegação e as interfaces com um usuário real, o arquivo `seeds.rb` inclui uma amostra de dados para popular o banco de dados. Carregue essa informações da seguinte forma:
+
+```bash
+# Para carregar os valores do db/seeds.rb com:
+rails db:seed
+
+# Ou caso precise apagar o banco antes
+rails db:reset 
+``` 
+
+Dessa forma, podes navegar como **Visitante** ou logar como:
+
+- **Colaborador**: { email: pedro@devapps.com.br, password: 123456 } 
+- **Candidato**: { email: teca@gmail.com.br, password: 123456 }
+
+
 ## Executando os Testes 
 
 Para os testes foram utilizadas as gems **Rspec** e **Capybara**, além da **FactoryBot** para facilitar a criação de instâncias nos testes.  
