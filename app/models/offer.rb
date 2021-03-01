@@ -1,6 +1,7 @@
 class Offer < ApplicationRecord
-  belongs_to :job
-  belongs_to :candidate
+  belongs_to :job_application
+  has_one :job, through: :job_application
+  has_one :candidate, through: :job_application
 
   validates :message, :salary, :start_date, presence: true
   validate :job_must_be_active
@@ -20,6 +21,7 @@ class Offer < ApplicationRecord
   private
   
   def job_must_be_active
+    job = Job.find(job_id)
     unless job.active?
       errors.add(:job, "não está mais aberta")
     end

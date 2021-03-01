@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_135250) do
+ActiveRecord::Schema.define(version: 2021_03_01_154528) do
 
   create_table "candidates", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -91,7 +91,9 @@ ActiveRecord::Schema.define(version: 2021_02_26_135250) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
     t.string "decline_message"
+    t.integer "job_application_id", null: false
     t.index ["candidate_id"], name: "index_offers_on_candidate_id"
+    t.index ["job_application_id"], name: "index_offers_on_job_application_id"
     t.index ["job_id"], name: "index_offers_on_job_id"
   end
 
@@ -100,5 +102,6 @@ ActiveRecord::Schema.define(version: 2021_02_26_135250) do
   add_foreign_key "job_applications", "jobs"
   add_foreign_key "jobs", "companies"
   add_foreign_key "offers", "candidates"
+  add_foreign_key "offers", "job_applications"
   add_foreign_key "offers", "jobs"
 end

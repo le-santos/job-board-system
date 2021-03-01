@@ -3,8 +3,9 @@ FactoryBot.define do
     message { "Candidatura aceita! Avalie nossa proposta" }
     salary { 3000 }
     start_date { "31-12-2021" }
-    job { Job.last || association(:job) }
-    candidate { Candidate.last || association(:candidate) }
+    job_id { Job.last.id || association(:job) }
+    candidate_id { Candidate.last.id || association(:candidate) }
+    job_application { JobApplication.last }
   end
 
   factory :employee do

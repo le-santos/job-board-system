@@ -7,12 +7,13 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
     
     job_application = JobApplication.find(params[:job_application_id])
-    @offer.job = job_application.job
-    @offer.candidate = job_application.candidate
-    
+    @offer.job_id = job_application.job.id
+    @offer.candidate_id = job_application.candidate.id
+    @offer.job_application_id = job_application.id
+  
     if @offer.save
       job_application.accepted!
-      redirect_to jobs_path(@offer.job), notice: t('.success')
+      redirect_to jobs_path(@offer.job_id), notice: t('.success')
     else
       #FIXME pq flash nao foi automatico nesse render :new?
       flash.now[:alert] = @offer.errors.full_messages.join(', ')
@@ -21,8 +22,7 @@ class OffersController < ApplicationController
   end
 
   def show
-    params
-    @offer = Offer.find(params[:id])
+    @offer = JobApplication.find(params[:id]).offer
   end
 
   def accept
@@ -37,7 +37,7 @@ class OffersController < ApplicationController
 
   def decline
     @offer = Offer.find(params[:id])
-    
+
     if offer_params[:decline_message]
       @offer.decline_message = offer_params[:decline_message]
       @offer.declined!
@@ -51,7 +51,7 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:message, :salary, :start_date, 
-                                  :job_id, :candidate_id, 
+                                  :job_id, :candidate_id, :job_application_id, 
                                   :confirmation_date, :decline_message)
   end
 end

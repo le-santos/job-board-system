@@ -1,6 +1,7 @@
 class JobApplication < ApplicationRecord
   belongs_to :candidate
   belongs_to :job
+  has_one :offer
 
   validates :candidate, uniqueness: { scope: :job, message: 'já se candidatou para a vaga' }
   validate :profile_cannot_be_blank
