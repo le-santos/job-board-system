@@ -1,5 +1,13 @@
-<h1>Job 4 Devs</h1>
-<p>Vagas de tecnologia</p>
+<section class="jumbotron-fluid text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Job 4 Devs</h1>
+    <p class="lead">Vagas de tecnologia</p>
+    <p>
+      <%= link_to t('.jobs'), jobs_path, class: "btn btn-primary" %>
+      <%= link_to t('.companies'), companies_path, class: "btn btn-secondary" %>
+    </p>
+  </div>
+</section>
 
-<%= link_to t('.companies'), companies_path %>
-<%= link_to t('.jobs'), jobs_path %>
+
+

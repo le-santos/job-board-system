@@ -1,16 +1,17 @@
-<h1>Empresas cadastradas</h1>
-
-
-<% if @companies.blank? %>
-  <p><%= t('.zero_company')  %></p>
-<% else %>
-  <% @companies.each do |company|  %>
-    <div>
-      <p><%= link_to company.name, company_path(company[:id]) %></p>
-      <p><%= company.description  %></p>
-      <p><%= company.tech_stack  %></p>
-      <img src="<%= company.logo %>" >
-    </div>
+<div class="jumbotron">
+  <h1 class="display-5">Empresas cadastradas</h1>
+  <hr class="my-4">
+  
+  <% if @companies.blank? %>
+    <p><%= t('.zero_company')  %></p>
+  <% else %>
+    <% @companies.each do |company|  %>
+      <div>
+        <p><%= link_to company.name, company_path(company[:id]) %></p>
+        <p><%= company.description  %></p>
+        <p><%= company.tech_stack  %></p>
+        <img src="<%= company.logo %>" >
+      </div>
+    <% end %>
   <% end %>
-<% end %>
-
+</div>
