@@ -25,7 +25,9 @@ ruby --version
 - [Rspec_rails](https://github.com/rspec/rspec-rails) 4.0.2 
 - [Capybara](https://github.com/teamcapybara/capybara) 3.34.0 
 - [SimpleCov](https://github.com/simplecov-ruby/simplecov) 0.12.2 
-- [Factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) 6.1.0 
+- [Factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) 6.1.0
+- [Bootstrap](https://github.com/twbs/bootstrap-rubygem) 5.0.0.beta2
+- [Jquery-rails](https://github.com/rails/jquery-rails) 4.4.0
 
 ## Instalando a aplicação 
 
@@ -129,13 +131,13 @@ A aplicação tem duas funcionalidades básicas:
 :ballot_box_with_check: São desativadas automaticamente após zerar a quantidade disponível ou quando a data expirar 
 
 
-### Próximos passos
+## Próximos passos
 
 O projeto ainda está finalizando o desenvolvimento de suas funcionalidades.
 Após completar essas etapas, alguns dos próximos passos serão:
 
-- Elaboração do (CSS) e layout
+- Completar a revisão do CSS e layout de todas as views
+- Adicionar funcionalidade de busca por vagas
 - Revisar formato dos formulários de cadastro
-- Confirmação de cadastro 
-- Validação de dados (como email, CPF)
-- Funcionalidade Banco de Currículos
+- Adicionar validação de dados como email e CPF
+- Adicionar confirmação de cadastro 
