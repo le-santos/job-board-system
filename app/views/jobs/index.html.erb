@@ -1,26 +1,34 @@
-<h2>Lista de Vagas</h2>
+<section class='container w-75 job-list'>
+  <h1 class="display-6">Lista de Vagas</h1> 
+  <hr>
 
 <% if @jobs.blank? %>
   <p><%= t('.jobs_blank') %></p>
 <% else %>
-  <section class='job-list'>
     <% @jobs.each do |job| %>
-      <div class='job-details'>
-        <dl>
-          <dt><%= t('.title') %></dt>
-          <dd><%= job.title  %></dd>
-          <dt><%= t('.company') %></dt>
-          <dd><%= job.company.name  %></dd>
-          <dt><%= t('.details') %></dt>
-          <dd><%= job.details %></dd>
-          <dt><%= t('.requirements') %></dt>
-          <dd><%= job.requirements %></dd>
-          <dt><%= t('.deadline') %></dt>
-          <dd><%= job.deadline %></dd>
-          <dt><%= t('.quantity_of_positions') %></dt>
-          <dd><%= job.quantity_of_positions %><dd>
+      <div class=<%="job-details-#{job.id}"%>>
+        <dl class="row bg-light text-dark border border-secondary rounded p-3 my-4">
+          <dt class="col-sm-3"><%= t('.title') %></dt>
+          <dd class="col-sm-9"><%= job.title  %></dd>
+
+          <dt class="col-sm-3"><%= t('.company') %></dt>
+          <dd class="col-sm-9"><%= job.company.name  %></dd>
+          
+          <dt class="col-sm-3"><%= t('.details') %></dt>
+          <dd class="col-sm-9"><%= job.details %></dd>
+          
+          <dt class="col-sm-3"><%= t('.requirements') %></dt>
+          <dd class="col-sm-9"><%= job.requirements %></dd>
+          
+          <dt class="col-sm-3"><%= t('.deadline') %></dt>
+          <dd class="col-sm-9"><%= job.deadline %></dd>
+          
+          <dt class="col-sm-3"><%= t('.quantity_of_positions') %></dt>
+          <dd class="col-sm-9"><%= job.quantity_of_positions %><dd>
+          
+          <dt><%= link_to "Detalhes da Vaga", job_path(job), class: "btn btn-outline-primary" %></dt>
         </dl>
       </div>
     <% end %>
-  </section>  
 <% end %>
+</section>  
