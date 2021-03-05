@@ -1,35 +1,41 @@
-<h2>Detalhes da Vaga</h2>
-
-<div class='job-details'>
-  <dl>
-    <dt><%= t('.title') %></dt>
-    <dd><%= @job.title  %></dd>
-    <dt><%= t('.company') %></dt>
-    <dd><%= @job.company.name  %></dd>
-    <dt><%= t('.details') %></dt>
-    <dd><%= @job.details %></dd>
-    <dt><%= t('.requirements') %></dt>
-    <dd><%= @job.requirements %></dd>
-    <dt><%= t('.deadline') %></dt>
-    <dd><%= @job.deadline %></dd>
-    <dt><%= t('.quantity_of_positions') %></dt>
-    <dd><%= @job.quantity_of_positions %><dd>
-    <dt><%= t('.status') %></dt>
-    <dd><%= @job.status %><dd>
-  </dl>
-</div>
-
-<div>
-  <% if employee_signed_in? && current_employee.company == @job.company %>
-      <%= link_to t('.edit_job'), edit_job_path(@job)  %>
-      <% unless @job.inactive? %>
-        <%= link_to t('.inactive_job'), inactivate_job_path(@job), method: :post %>
+<section class="container w-75">
+  <div class="card job-details">
+    <div class="card-header px-5">
+      <h4 class="display-6 mt-2"><%= @job.title  %></h4>
+    </div>
+    
+    <div class="card-body px-5">
+      <dl class="row mb-0">
+        <dt class="col-sm-3"><%= t('.company') %></dt>
+        <dd class="col-sm-9"><%= @job.company.name  %></dd>
+        <dt class="col-sm-3"><%= t('.details') %></dt>
+        <dd class="col-sm-9"><%= @job.details %></dd>
+        <dt class="col-sm-3"><%= t('.requirements') %></dt>
+        <dd class="col-sm-9"><%= @job.requirements %></dd>
+        <dt class="col-sm-3"><%= t('.deadline') %></dt>
+        <dd class="col-sm-9"><%= @job.deadline %></dd>
+        <dt class="col-sm-3"><%= t('.quantity_of_positions') %></dt>
+        <dd class="col-sm-9"><%= @job.quantity_of_positions %></dd>
+        <dt class="col-sm-3"><%= t('.status') %></dt>
+        <dd class="col-sm-9"><%= @job.status %><dd>
+      </dl>
+    </div>
+    
+    <div class="card-footer text-muted px-5">
+      <% if employee_signed_in? && current_employee.company == @job.company %>
+          <%= link_to t('.edit_job'), edit_job_path(@job), class: "btn btn-warning"  %>
+          <% unless @job.inactive? %>
+            <%= link_to t('.inactive_job'), inactivate_job_path(@job), method: :post, class: "btn btn-danger" %>
+          <% end %>
+      <% elsif candidate_signed_in? && @job.active? && !current_candidate.has_applied_for?(@job) %>
+        <%= link_to t('.apply_for_job'), apply_candidate_path, method: :post, class: "btn btn-success"  %>
+      <% else %>
+        Já enviou candidatura para esta vaga!
       <% end %>
-  <% elsif candidate_signed_in? && @job.active? && !current_candidate.has_applied_for?(@job) %>
-    <%= link_to t('.apply_for_job'), apply_candidate_path, method: :post  %>
-  <% end %>
 
-  <% unless candidate_signed_in? || employee_signed_in? %>
-    <%= link_to t('.apply'), new_candidate_session_path %>
-  <% end %>  
-</div>
+      <% unless candidate_signed_in? || employee_signed_in? %>
+        <%= link_to t('.apply'), new_candidate_session_path, class: "btn btn-primary" %>
+      <% end %>  
+    </div>
+  </div>
+</section>
