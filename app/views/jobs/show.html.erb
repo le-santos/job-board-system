@@ -29,7 +29,7 @@
           <% end %>
       <% elsif candidate_signed_in? && @job.active? && !current_candidate.has_applied_for?(@job) %>
         <%= link_to t('.apply_for_job'), apply_candidate_path, method: :post, class: "btn btn-success"  %>
-      <% else %>
+      <% elsif candidate_signed_in? && @job.active? %>
         Já enviou candidatura para esta vaga!
       <% end %>
 

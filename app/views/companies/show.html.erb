@@ -1,39 +1,55 @@
-<h2>Detalhes da empresa</h2>
+<div class="container w-75">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="display-7">Detalhes da empresa</h2>
+    <%= link_to t('.back'), companies_path %>
+  </div>
+  <hr>
 
-<div>
-  <%= link_to t('.back'), companies_path %>
-</div>
+  <div class="card mb-4 mb-5">
+    <div class="card-header px-5 d-flex align-items-center">
+      <img src="<%= @company.logo %>">
+      <h4 class="display-6 mt-2 px-4"><%= @company.name  %></h4>
+    </div>
+    <div class="card-body px-5">
+      <dl class="row mb-0">
+        <dt class="col-sm-3"><%= t('.description') %></dt>
+        <dd class="col-sm-9"><%= @company.description  %></dd>
 
-<div>
-    <img src="<%= @company.logo %>" >
-    <p><%= @company.name %></p>
-    <p><%= @company.description  %></p>
-    <p><%= @company.address  %></p>
-    <p><%= @company.tech_stack.split(',').join(' -')  %></p>
-    
+        <dt class="col-sm-3"><%= t('.address') %></dt>
+        <dd class="col-sm-9"><%= @company.address  %></dd>
+
+        <dt class="col-sm-3"><%= t('.tech_stack') %></dt>
+        <dd class="col-sm-9"><%= @company.tech_stack.split(',').join(' -') %></dd>
+      </dl>
+    </div>
     <% if employee_signed_in? && current_employee.company == @company %>
-      <%= link_to t('.create_jobs'), new_company_job_path(@company)  %>
-      <%= link_to t('.company_applications'), job_applications_company_path(@company)  %>
-      <% if current_employee.admin? %>
-        <%= link_to t('.edit_company_profile'), edit_company_path(@company)  %>
-      <% end %>
-    <% end %>
-    
-</div>
-
-<% if @company.jobs.blank? %>
-  <h3><%= t('.jobs_blank') %></h3>
-<% else %>
-  <section class='job-list'>
-    <h2><%= t('.company_jobs') %></h2>
-    <% @company.jobs.each do |job|  %>
-      <div class="job-<%=job.id%>">
-        <h3><%= job.title %></h3>
-        <p><%= job.level %></p>
-        <p><%=t('.up_to') %> <%= number_to_currency(job.salary, delimiter: '.', precision: 0) %></p>
-        <%= link_to t('.job_details'), job_path(job)  %>
+      <div class="card-footer text-muted px-5">
+        <%= link_to t('.create_jobs'), new_company_job_path(@company), class: "btn btn-success my-2"  %>
+        <%= link_to t('.company_applications'), job_applications_company_path(@company), class: "btn btn-secondary my-2"  %>
+        <% if current_employee.admin? %>
+          <%= link_to t('.edit_company_profile'), edit_company_path(@company), class: "btn btn-warning my-2"  %>
+        <% end %>
       </div>
     <% end %>
-  </section>
-<% end %>
+  </div>
 
+  <% if @company.jobs.blank? %>
+    <h3><%= t('.jobs_blank') %></h3>
+  <% else %>
+    <h3><%= t('.company_jobs') %></h3>
+    <hr>
+    <section class='job-list d-flex'>
+      <% @company.jobs.each do |job|  %>
+        <div class="job-<%=job.id%> card mr-2" style="max-width: 18rem">
+          <div class="card-body bg-light border">
+            <h4 class="card-title"><%= job.title %></h4>
+            <p class="card-text"><%= job.level %></p>
+            <p class="card-text"><%=t('.up_to') %> <%= number_to_currency(job.salary, delimiter: '.', precision: 0) %></p>
+            <%= link_to t('.job_details'), job_path(job)  %>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
+
+</div>
