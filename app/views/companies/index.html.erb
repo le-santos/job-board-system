@@ -1,17 +1,25 @@
-<div class="jumbotron">
-  <h1 class="display-5">Empresas cadastradas</h1>
-  <hr class="my-4">
-  
+<div class="jumbotron mx-5">
+  <div class="container w-75">
+    <h1 class="display-5">Empresas cadastradas</h1>
+    <hr class="my-4">
+  </div>
+</div>
+
+<div class="container d-flex flex-column align-items-center">
   <% if @companies.blank? %>
     <p><%= t('.zero_company')  %></p>
   <% else %>
     <% @companies.each do |company|  %>
-      <div>
-        <p><%= link_to company.name, company_path(company[:id]) %></p>
-        <p><%= company.description  %></p>
-        <p><%= company.tech_stack  %></p>
-        <img src="<%= company.logo %>" >
+      <div class="card mt-4 w-75">
+        <div class="card-header d-flex flex-row">
+          <img src="<%= company.logo %>" class="d-inline-flex p-2" >
+          <h4><%= link_to company.name, company_path(company[:id]), class: 'card-title' %></h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= company.description  %></p>
+          <p class="card-text"><%= company.tech_stack  %></p>
+        </div>
       </div>
     <% end %>
   <% end %>
-</div>
+<div>
