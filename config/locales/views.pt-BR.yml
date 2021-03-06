@@ -61,13 +61,16 @@ pt-BR:
       decline_application: "Recusar Candidatura"
       accept_application: "Aceitar/Enviar Proposta"
     show:
+      address: "Endereço"
       back: 'Voltar'
       company_applications: "Candidaturas Recebidas"
       company_jobs: "Vagas da Empresa"
       create_jobs: "Criar Vagas"
+      description: "Descrição"
       edit_company_profile: "Editar perfil da Empresa"
       jobs_blank: "Nenhuma vaga disponível no momento"
       job_details: "Detalhes da Vaga"
+      tech_stack: "Tecnologias"
       up_to: "Até"
   job_applications:
     edit:
