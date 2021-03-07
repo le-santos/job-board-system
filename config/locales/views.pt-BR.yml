@@ -121,6 +121,13 @@ pt-BR:
       accepted: "Proposta aceita"
     decline:
       declined: "Proposta recusada"
+  shared:
+    new_session:  
+      don_t_have_account: 'Não tem conta?'
+      remember_me: 'Lembre-se de mim'
+      sign_in: 'Login'
+    new_registration:
+      sign_up: 'Inscrever-se'
   pending: "Pendente de avaliação"
   accepted: "Aceita"
   declined: "Candidatura Recusada"

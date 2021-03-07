@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="container-fluid pt-5">
+  <body class="container-fluid h-100 p-0">
     <header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
       <nav class="container-md flex-wrap flex-md-nowrap" >
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link active' %></li>
+            <li class="nav-item"><%= link_to t('.home'), root_path, class: 'nav-link' %></li>
             <% if candidate_signed_in? %>
               <li class="nav-item"><%= link_to current_candidate.email, candidate_path(current_candidate), class: 'nav-link' %></li>
               <li class="nav-item"><%= link_to t('.sign_out'), destroy_candidate_session_path, method: :delete, class: 'nav-link' %></li>
@@ -34,7 +34,7 @@
       </nav>
     </header>
     
-    <main class="pt-5">
+    <main class="h-100 bg-light d-flex flex-column justify-content-center align-items-center">
       <div class="container flash-messages">
         <% flash.each do |key, value| %>
           <div class="<%= bootstrap_class_for_flash(key) %>">

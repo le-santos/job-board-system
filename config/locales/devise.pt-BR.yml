@@ -36,6 +36,11 @@ pt-BR:
         updated_at: Atualizado em
     models:
       candidate: Candidato
+      employee: Colaborador
+      company: Empresa
+      job: Vaga
+      job_application: Candidatura
+      offer: Proposta
   devise:
     confirmations:
       confirmed: A sua conta foi confirmada com sucesso.
