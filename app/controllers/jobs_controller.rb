@@ -1,12 +1,12 @@
 class JobsController < ApplicationController
-  before_action :authenticate_employee!, except: %i[ index show ]
+  before_action :authenticate_employee!, except: %i[index show]
 
   def index
     @jobs = Job.all
   end
 
   def new
-    @job = Job.new()
+    @job = Job.new
   end
 
   def create
@@ -17,19 +17,19 @@ class JobsController < ApplicationController
       redirect_to @job, notice: t('.success')
     else
       render new
-    end    
+    end
   end
-  
+
   def show
-    @job = Job.find(params[:id])
+    @job = find_job
   end
 
   def edit
-    @job = Job.find(params[:id])
+    @job = find_job
   end
 
   def update
-    @job = Job.find(params[:id])
+    @job = find_job
 
     if @job.update(job_params)
       redirect_to @job, notice: 'Vaga atualizada com sucesso'
@@ -39,16 +39,20 @@ class JobsController < ApplicationController
   end
 
   def inactivate
-    @job = Job.find(params[:id])
-    
+    @job = find_job
     @job.inactive!
     redirect_to @job, notice: 'Vaga desativada!'
   end
 
   private
+
   def job_params
-    params.require(:job).permit(:company_id, :title, :description, 
-                                :salary, :level, :requirements, 
+    params.require(:job).permit(:company_id, :title, :description,
+                                :salary, :level, :requirements,
                                 :deadline, :quantity_of_positions)
+  end
+
+  def find_job
+    Job.find(params[:id])
   end
 end
