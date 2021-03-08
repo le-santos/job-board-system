@@ -27,4 +27,9 @@ Rails.application.routes.draw do
     post 'inactivate', on: :member
   end
 
+  namespace 'api', defaults: {format: :json} do
+    namespace 'v1' do
+      resources 'jobs', only: %i[index]
+    end
+  end
 end
