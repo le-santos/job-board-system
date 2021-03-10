@@ -16,6 +16,7 @@
           <h4><%= link_to company.name, company_path(company[:id]), class: 'card-title' %></h4>
         </div>
         <div class="card-body">
+          <% p company %>
           <p class="card-text"><%= company.description  %></p>
           <p class="card-text"><%= company.tech_stack  %></p>
         </div>

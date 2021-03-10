@@ -49,6 +49,7 @@ group :development do
   gem 'spring'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  gem 'faker'
 end
 
 group :test do
