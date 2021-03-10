@@ -21,7 +21,7 @@ Layout/LineLength:
   Max: 80
 
 Metrics/BlockLength:
-  IgnoredMethods: ['describe', 'context', 'feature', 'scenario', 'let']
+  IgnoredMethods: ['describe', 'context', 'feature', 'scenario', 'let', 'it']
 
 Style/AsciiComments:
   Enabled: false
