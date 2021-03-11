@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="vh-100">
   <head>
     <title>JobBoardSystem</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,8 +10,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="container-fluid h-100 p-0">
-    <header class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <body class="container-fluid vh-100 p-0">
+    <header class="navbar navbar-expand-md navbar-dark text-light fixed-top bg-dark">
       <nav class="container-md flex-wrap flex-md-nowrap" >
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
       </nav>
     </header>
     
-    <main class="h-100 bg-light pt-5 d-flex flex-column justify-content-center align-items-center">
+    <main class="bg-light min-vh-100 pt-5 d-flex flex-column justify-content-center align-items-center">
       <div class="container flash-messages">
         <% flash.each do |key, value| %>
           <div class="<%= bootstrap_class_for_flash(key) %>">

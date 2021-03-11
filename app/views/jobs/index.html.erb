@@ -1,28 +1,32 @@
-<section class='container w-75 job-list'>
-  <h1 class="display-6">Lista de Vagas</h1> 
-  <hr>
+<div class="jumbotron mx-auto mt-5">
+  <div class="container">
+    <h1 class="display-5">Lista de Vagas</h1>
+    <hr class="my-4">
+  </div>
+</div>
 
-<% if @jobs.blank? %>
-  <p><%= t('.jobs_blank') %></p>
-<% else %>
-    <% @jobs.each do |job| %>
-      <div class=<%="job-details-#{job.id}"%>>
-        <dl class="row bg-light text-dark border border-secondary rounded p-3 my-4">
-          <dt class="col-sm-3"><%= t('.title') %></dt>
-          <dd class="col-sm-9"><%= job.title  %></dd>
+<section class='container w-50 job-list'>
+  <% if @jobs.blank? %>
+    <p><%= t('.jobs_blank') %></p>
+  <% else %>
+      <% @jobs.each do |job| %>
+        <div class=<%="job-details-#{job.id}"%>>
+          <dl class="row p-3 my-4 bg-light text-dark shadow-lg rounded">
+            <dt class="col-sm-3"><%= t('.title') %></dt>
+            <dd class="col-sm-9"><%= job.title  %></dd>
 
-          <dt class="col-sm-3"><%= t('.company') %></dt>
-          <dd class="col-sm-9"><%= job.company.name  %></dd>
-          
-          <dt class="col-sm-3"><%= t('.deadline') %></dt>
-          <dd class="col-sm-9"><%= job.deadline %></dd>
-          
-          <dt class="col-sm-3"><%= t('.quantity_of_positions') %></dt>
-          <dd class="col-sm-9"><%= job.quantity_of_positions %><dd>
-          
-          <dt><%= link_to "Detalhes da Vaga", job_path(job), class: "btn btn-outline-primary" %></dt>
-        </dl>
-      </div>
-    <% end %>
-<% end %>
+            <dt class="col-sm-3"><%= t('.company') %></dt>
+            <dd class="col-sm-9"><%= job.company.name  %></dd>
+            
+            <dt class="col-sm-3"><%= t('.deadline') %></dt>
+            <dd class="col-sm-9"><%= job.deadline %></dd>
+            
+            <dt class="col-sm-3"><%= t('.quantity_of_positions') %></dt>
+            <dd class="col-sm-9"><%= job.quantity_of_positions %><dd>
+            
+            <dt><%= link_to "Detalhes da Vaga", job_path(job), class: "btn btn-outline-primary" %></dt>
+          </dl>
+        </div>
+      <% end %>
+  <% end %>
 </section>  

@@ -1,23 +1,23 @@
-<div class="jumbotron mx-5">
-  <div class="container w-75">
+<div class="jumbotron mx-auto mt-5">
+  <div class="container">
     <h1 class="display-5">Empresas cadastradas</h1>
     <hr class="my-4">
   </div>
 </div>
 
-<div class="container d-flex flex-column align-items-center">
+<div class="container d-flex flex-column align-items-center justify-content-center">
   <% if @companies.blank? %>
     <p><%= t('.zero_company')  %></p>
   <% else %>
     <% @companies.each do |company|  %>
-      <div class="card mt-4 w-75">
-        <div class="card-header d-flex flex-row justify-content-left align-items-center">
-          <a class="mx-5" style="width: 50px;" href="<%=company_path(company[:id])%>" >
-            <img src="<%= company.logo %>" class="img-fluid img-thumbnail rounded" >
+      <div class="card m-4 w-50 shadow">
+        <div class="card-header d-flex flex-column flex-md-row align-items-center justify-content-md-center">
+          <a class="mx-5" style="min-width: 80px; max-width: 150px" href="<%=company_path(company[:id])%>" >
+            <img src="<%= company.logo %>" class="img-fluid rounded" >
           </a>
-          <h4><%= link_to company.name, company_path(company[:id]), class: 'card-title' %></h4>
+          <h5 class="my-3 card-title"><%= link_to company.name, company_path(company[:id]), style: "text-decoration: none;" %></h5>
         </div>
-        <div class="card-body">
+        <div class="card-body px-md-5">
           <p class="card-text"><%= company.description  %></p>
           <p class="card-text"><%= company.tech_stack  %></p>
         </div>
