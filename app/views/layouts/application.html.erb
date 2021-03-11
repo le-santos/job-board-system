@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-100">
+<html>
   <head>
     <title>JobBoardSystem</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,7 +34,7 @@
       </nav>
     </header>
     
-    <main class="h-100 bg-light d-flex flex-column justify-content-center align-items-center">
+    <main class="h-100 bg-light pt-5 d-flex flex-column justify-content-center align-items-center">
       <div class="container flash-messages">
         <% flash.each do |key, value| %>
           <div class="<%= bootstrap_class_for_flash(key) %>">
