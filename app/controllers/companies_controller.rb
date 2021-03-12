@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :check_employee_admin, only: %i[create edit update]
   before_action :check_employee_staff, only: [:job_applications]
-  # FIXME: cada company deve ter uma coluna indicando quem é admin
 
   def index
     @companies = Company.all

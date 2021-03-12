@@ -5,7 +5,7 @@ class Employee < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :company
-  #FIXME employee não pode mudar seu role de stafdf para admin
+
   enum role: { staff: 0, admin: 10}
 
   private

@@ -9,7 +9,6 @@
     <%= f.label :name %>
     <%= f.text_field :name, placeholder: "Nome da empresa" %><br />
 
-    <%#TODO Verificar se esse disabled funciona  %>
     <%= f.label :domain %>
     <%= f.text_field :domain, disabled: true, placeholder: @company.domain %><br />
 
@@ -22,7 +21,6 @@
     <%= f.label :tech_stack %>
     <%= f.text_field :tech_stack, placeholder: "ReactJS, NodeJS, etc..." %><br />
 
-    <%#TODO - mudar o field do logo para file, além do save na DB  %>
     <%= f.label :logo %>
     <%= f.text_field :logo, placeholder: "url do logo" %><br />
     

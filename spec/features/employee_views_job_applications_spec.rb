@@ -49,7 +49,6 @@ feature 'Employee views job applications' do
     job = FactoryBot.create(:job )
     job_application = JobApplication.create(candidate: candidate, job: job)
 
-    #FIXME testar scenarios com + de 1 emepresa e job_apps
     login_as employee, scope: :employee
     visit company_path(company)
     click_on 'Candidaturas Recebidas'

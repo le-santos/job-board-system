@@ -15,7 +15,6 @@ class OffersController < ApplicationController
       job_application.accepted!
       redirect_to jobs_path(@offer.job_id), notice: t('.success')
     else
-      # FIXME: flash nao foi automatico nesse render :new
       flash.now[:alert] = @offer.errors.full_messages.join(', ')
       render :new
     end

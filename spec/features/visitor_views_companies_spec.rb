@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'visitor views companies' do
   scenario 'successfully' do
-    # TODO Address poderia ser um JSON
     Company.create!(name: 'Atendbots' , 
                     description: 'Sistemas de automação de atendimento (chatbots) para pequenos negócios' , 
                     logo: 'atendbot_url' , 
