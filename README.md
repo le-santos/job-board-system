@@ -1,6 +1,5 @@
 # Job Board System (Rails Web App)
 
----------
 [![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
 
 > Status do Projeto: Em desenvolvimento :warning:
@@ -8,6 +7,17 @@
 Essa aplicação é uma plataforma Web de gestão de vagas de emprego e candidaturas. Ela permite que pessoas do RH de empresas criem e gerenciem as vagas de forma colaborativa. Além disso, a plataforma funciona como um site de busca empregos, no qual visitantes podem se cadastrar e se candidatar as vagas disponíveis.
 
 O projeto foi contruído seguindo a **prática do TDD**, contando com testes unitários e de integração, e foi desenvolvido ao longo do programa [TreinaDev](https://treinadev.com.br/), da [Campus Code](https://www.campuscode.com.br/).
+
+
+## Conteúdo
+
+1. [Pré-requisitos](#pré-requisitos)
+3. [Dependências](#dependências)
+4. [Instalando a aplicação](#instalando-a-aplicação)
+5. [Rodando a aplicação](#rodando-a-aplicação)
+6. [Executando os Testes](#executando-os-testes)
+7. [API](#api) 
+8. [Próximos Passos](#próximos-passos) 
 
 ---------
 
@@ -25,7 +35,7 @@ Verifique se tem esses requisitos buscando as versões no terminal:
 ruby --version 
 ``` 
 
-## Dependências: Gems utilizadas
+## Dependências
 
 - [Devise](https://github.com/heartcombo/devise)  4.7.3
 - [Rspec_rails](https://github.com/rspec/rspec-rails) 4.0.2 
@@ -142,10 +152,51 @@ A aplicação tem duas funcionalidades básicas:
 :ballot_box_with_check: São desativadas automaticamente após zerar a quantidade disponível ou quando a data expirar 
 
 
+## API 
+
+A aplicação conta com um endpoint para acessar um json com a lista de vagas da plataforma.
+
+Para testar, rode a aplicação com `rails server` e utilize o seguinte endpoint na sua máquina `https://localhost:3000/v1/jobs`.
+
+```javascript
+// Exemplo de Response:
+[
+ {
+  "id":1,
+  "title":"Desenvolvedor(a) Backend Júnior",
+  "details":"Desenvolvedor(a) para criação de aplicações web",
+  "salary":3500,
+  "level":"Júnior",
+  "requirements":"Ruby on Rails, SQLite, HTML, CSS",
+  "deadline":"24/12/2022",
+  "quantity_of_positions":4,
+  "company_id":6,
+  "created_at":"2021-03-12T18:06:10.214Z",
+  "updated_at":"2021-03-12T18:06:10.214Z",
+  "status":"active"
+ },
+ {
+  "id": 2,
+  "title": "Desenvolvedor(a) Frontend Pleno",
+  "details": "Desenvolvedor(a) React para desenvolvimento de aplicações web",
+  "salary": 5000,
+  "level": "Pleno",
+  "requirements": "React, Javascript, HTML, CSS",
+  "deadline": "24/12/2022",
+  "quantity_of_positions": 4,
+  "company_id": 1,
+  "created_at": "2021-03-12T18:06:10.275Z",
+  "updated_at": "2021-03-12T18:06:10.275Z",
+  "status": "active"
+ }
+]
+``` 
+
+
 ## Próximos passos
 
-O projeto ainda está finalizando o desenvolvimento de suas funcionalidades.
-Após completar essas etapas, alguns dos próximos passos serão:
+O projeto já conta com todas as suas funcionalidades básicas.
+As próximas tarefas incluem:
 
 - Completar a revisão do CSS e layout de todas as views
 - Adicionar funcionalidade de busca por vagas
