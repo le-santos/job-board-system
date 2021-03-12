@@ -34,7 +34,9 @@
       </nav>
     </header>
     
-    <main class="bg-light min-vh-100 pt-5 d-flex flex-column justify-content-center align-items-center">
+    <main class="pt-5 d-flex flex-column justify-content-center align-items-center"
+      style="background: linear-gradient(90deg, rgba(219,219,219,1) 0%, rgba(176,190,196,1) 90%);
+            min-height: calc(100vh - 40px);">
       <div class="container flash-messages">
         <% flash.each do |key, value| %>
           <div class="<%= bootstrap_class_for_flash(key) %>">
@@ -44,5 +46,10 @@
       </div>
       <%= yield %>
     </main>
+    <footer class="footer bg-dark text-light d-flex align-items-center justify-content-center px-4" style="height: 40px;">
+      <span>Criado por 
+        <a class="text-info" href="https://github.com/le-santos/job-board-system">Leandro Quintério</a>
+      </span>
+    </footer>
   </body>
 </html>
