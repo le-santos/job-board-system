@@ -15,10 +15,10 @@ class Company < ApplicationRecord
   end
 
   def get_job_applications(job_applications)
-    job_applications.map { |j| 
+    job_applications.map { |j|
       { candidate: Candidate.find(j.candidate_id),
         job: Job.find(j.job_id),
-        job_application: JobApplication.find_by(candidate: j.candidate, job: j.job) }}
+        job_application: JobApplication.find_by( candidate: j.candidate, job: j.job) }}
   end
-
 end
+

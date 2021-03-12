@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :candidate do
-    email { 'paco@gmail.com' }
+    sequence(:email) { |n| "paco#{n}@gmail.com" }
     password { '123456' }
     name { 'Paco Silva' }
     cpf { '123456789' }

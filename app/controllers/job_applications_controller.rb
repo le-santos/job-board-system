@@ -12,7 +12,7 @@ class JobApplicationsController < ApplicationController
     @job_application.status = :declined
 
     if @job_application.update(job_app_params)
-      redirect_to job_applications_company_path,
+      redirect_to job_applications_company_path(@job_application.job.company),
                   notice: 'Candidatura Atualizada'
     else
       render :edit
