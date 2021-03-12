@@ -1,9 +1,15 @@
 # Job Board System (Rails Web App)
+
+---------
+[![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
+
 > Status do Projeto: Em desenvolvimento :warning:
 
 Essa aplicação é uma plataforma Web de gestão de vagas de emprego e candidaturas. Ela permite que pessoas do RH de empresas criem e gerenciem as vagas de forma colaborativa. Além disso, a plataforma funciona como um site de busca empregos, no qual visitantes podem se cadastrar e se candidatar as vagas disponíveis.
 
 O projeto foi contruído seguindo a **prática do TDD**, contando com testes unitários e de integração, e foi desenvolvido ao longo do programa [TreinaDev](https://treinadev.com.br/), da [Campus Code](https://www.campuscode.com.br/).
+
+---------
 
 ## Pré-requisitos 
 
@@ -28,6 +34,10 @@ ruby --version
 - [Factory_bot_rails](https://github.com/thoughtbot/factory_bot_rails) 6.1.0
 - [Bootstrap](https://github.com/twbs/bootstrap-rubygem) 5.0.0.beta2
 - [Jquery-rails](https://github.com/rails/jquery-rails) 4.4.0
+- [Faker](https://github.com/faker-ruby/faker) 2.16.0
+- [Rubocop](https://github.com/rubocop/rubocop) 1.11.0
+- [Rubocop-rails](https://github.com/rubocop/rubocop-rails) 2.9.1
+
 
 ## Instalando a aplicação 
 
@@ -75,7 +85,8 @@ rails db:reset
 
 Dessa forma, podes navegar como **Visitante** ou logar como:
 
-- **Colaborador**: { email: pedro@devapps.com.br, password: 123456 } 
+- **Colaborador(admin)**: { email: paula@devapps.com.br, password: 123456 } 
+- **Colaborador(staff)**: { email: pedro@devapps.com.br, password: 123456 } 
 - **Candidato**: { email: teca@gmail.com.br, password: 123456 }
 
 

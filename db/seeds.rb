@@ -38,15 +38,14 @@ end
   Employee.create(email: "#{admin}@#{domain}", password: '123456', role: 'admin')
 end
 
-
 # Sample users and jobs for Application test
 
-sample_domain = 'www.devapps.com.br'
+sample_domain = 'devapps.com.br'
 admin_employee = 'Paula'
 staff_employee = 'Jonas'
 
 sample_company = Company.create(company_attributes(domain: "www.#{sample_domain}"))
-Employee.create(email: "#{admin_employee}@#{sample_domain}", password: '123456')
+Employee.create(email: "#{admin_employee}@#{sample_domain}", password: '123456', role: :admin)
 Employee.create(email: "#{staff_employee}@#{sample_domain}", password: '123456')
 
 candidate1 = Candidate.create(
@@ -99,4 +98,3 @@ Offer.create([
                 candidate_id: candidate1.id, job_application: JobApplication.first
               }
             ])
-
