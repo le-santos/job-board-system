@@ -1,33 +1,36 @@
-<h2>Editar Perfil</h2>
-
-<%= form_with model: @candidate do |f| %>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, placeholder: @candidate.name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :cpf %><br />
-    <%= f.text_field :cpf, placeholder: @candidate.cpf %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone, placeholder: @candidate.phone %>
-  </div>
-
-  <div class="field">
-    <%= f.label :biography %><br />
-    <%= f.text_area :biography, placeholder: @candidate.biography %>
-  </div>
-
-  <div class="field">
-    <%= f.label :skills %><br />
-    <%= f.text_area :skills, placeholder: @candidate.skills %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit t('.save') %>
-  </div>
+<%= render 'components/main_header' do %>
+  <h2>Editar Perfil</h2>
 <% end %>
-  
+
+<section class="d-flex flex-column mx-auto mb-3 justify-content-around" style="min-height: 400px; max-width: 40vh">
+  <%= form_with model: @candidate, class: "form-signin" do |f| %>
+    <div class="field form-group mb-3">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, autofocus: true, placeholder: @candidate.name, class: "form-control" %>
+    </div>
+
+    <div class="field form-group mb-3">
+      <%= f.label :cpf %><br />
+      <%= f.text_field :cpf, placeholder: @candidate.cpf, disabled: true,  class: "form-control" %>
+    </div>
+    
+    <div class="field form-group mb-3">
+      <%= f.label :phone %><br />
+      <%= f.text_field :phone, placeholder: @candidate.phone, class: "form-control" %>
+    </div>
+
+    <div class="field form-group mb-3">
+      <%= f.label :biography %><br />
+      <%= f.text_area :biography, placeholder: @candidate.biography, class: "form-control" %>
+    </div>
+
+    <div class="field form-group mb-3">
+      <%= f.label :skills %><br />
+      <%= f.text_area :skills, placeholder: @candidate.skills, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit t('.save'), class: "btn btn-warning" %>
+    </div>
+  <% end %>
+</section>

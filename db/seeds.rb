@@ -49,7 +49,7 @@ Employee.create(email: "#{admin_employee}@#{sample_domain}", password: '123456',
 Employee.create(email: "#{staff_employee}@#{sample_domain}", password: '123456')
 
 candidate1 = Candidate.create(
-  candidate_attributes(email: 'teca@gmail.com,br', password: '123456'))
+  candidate_attributes(email: 'teca@email.com', password: '123456'))
 
 #JOBS SETUP
 

@@ -1,21 +1,35 @@
-<h2>Minhas Candidaturas</h2>
+<%= render 'components/main_header' do %>
+  <h2>Minhas Candidaturas</h2>
+<% end %>
 
-<div class='job-applications'>
+
+<div class="job-applications container d-flex flex-column align-items-center justify-content-center w-75">
   <% if @candidate.job_applications.blank? %>
     <h3> <%= t('.zero_applications')%> </h3>
   <% else %>
     <% @candidate.job_applications.each do |job_app|  %>
-      <div class="job-app-<%=job_app.id%>">
-        <p> <%= t('.job') %>: <%= job_app.job.title %></p>
-        <p><%= t('.company') %>: <%= job_app.job.company.name %></p>
-        <p><%= t('.status') %>: <%= I18n.t(".#{job_app.status}") %></p>
-        
+      <div class="job-app-<%=job_app.id%> card my-4 shadow" style="min-width: 75%">
+        <div class="card-header d-flex flex-column flex-md-row align-items-center justify-content-md-center">
+          <h4> <%= t('.job') %>: <%= job_app.job.title %></h4>
+        </div>
+
+        <div class="card-body px-md-5">
+          <p class="card-text"><%= t('.company') %>:
+            <span><%= job_app.job.company.name %></span>
+          </p> 
+          <p class="card-text"><%= t('.status') %>: 
+            <span><%= I18n.t(".#{job_app.status}") %></span>
+          </p>
+        </div>
+
         <% if job_app.declined? %>
           <p><%= t('.message') %>: <%= job_app.message %></p>
         <% end %>
-        
+          
         <% if job_app.accepted? %>
-          <%= link_to t('.check_offer'), job_application_offer_path(job_app)  %>
+          <div class="card-footer text-muted px-5">
+            <%= link_to t('.check_offer'), job_application_offer_path(job_app), class: 'btn btn-success'  %>
+          </div>
         <% end %>
       </div>
     <% end %>
